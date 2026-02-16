@@ -191,7 +191,7 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
      * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param array<string> $childMapping
+     * @param array<string, array<string, array<string, string>>> $childMapping
      *
      * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
      */

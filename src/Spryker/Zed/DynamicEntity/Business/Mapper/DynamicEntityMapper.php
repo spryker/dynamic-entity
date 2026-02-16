@@ -201,10 +201,10 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     * @param array<string> $childMapping
+     * @param array<string, array<string, array<string, string>>> $childMapping
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
      *
-     * @return array<string>
+     * @return array<string, array<string, array<string, string>>>
      */
     protected function mapDynamicEntityConfigurationRelationToChildMappingArray(
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer,
@@ -222,9 +222,9 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param array<string> $childMapping
+     * @param array<string, array<string, array<string, string>>> $childMapping
      *
-     * @return array<string>
+     * @return array<string, array<string, array<string, string>>>
      */
     public function getDynamicEntityConfigurationRelationMappedFields(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
