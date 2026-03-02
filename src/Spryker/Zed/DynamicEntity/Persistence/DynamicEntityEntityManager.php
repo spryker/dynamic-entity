@@ -72,11 +72,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
      */
     protected const PREFIX_GETTER_METHOD = 'get';
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function createDynamicEntityConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer {
@@ -89,11 +84,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityMapper->mapDynamicEntityConfigurationToTransfer($dynamicEntityConfigurationEntity, new DynamicEntityConfigurationTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function updateDynamicEntityConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer {
@@ -114,13 +104,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityMapper->mapDynamicEntityConfigurationToTransfer($dynamicEntityConfigurationEntity, new DynamicEntityConfigurationTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -142,13 +125,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createChildDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer,
@@ -177,15 +153,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -242,15 +209,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateChildDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer,
@@ -345,12 +303,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $childDynamicEntityConfigurationCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function deleteDynamicEntity(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -386,11 +338,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityRelationFieldMappingTransfer $relationFieldMappingTransfer
-     *
-     * @return string
-     */
     protected function convertChildFieldNameToSetForeignKeyMethod(DynamicEntityRelationFieldMappingTransfer $relationFieldMappingTransfer): string
     {
         $childFieldName = ucwords((string)preg_replace('/_/', ' ', $relationFieldMappingTransfer->getChildFieldNameOrFail()));
@@ -399,12 +346,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return sprintf('set' . $childFieldName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return bool
-     */
     protected function isDynamicEntityIdentifierCreatable(
         DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -432,15 +373,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Propel\Runtime\ActiveRecord\ActiveRecordInterface $activeRecord
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function processActiveRecordSaving(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         DynamicEntityTransfer $dynamicEntityTransfer,
@@ -474,14 +406,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityCollectionResponseTransfer->addDynamicEntity($dynamicEntityTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param string $dynamicEntityQueryClassName
-     * @param bool $isRequestAllowsNewEntityCreation
-     *
-     * @return \Propel\Runtime\ActiveRecord\ActiveRecordInterface|null
-     */
     protected function resolveActiveRecord(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer,
@@ -514,13 +438,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dyamicEntity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param string $identifierFieldVisibleName
-     * @param bool $isCreatable
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConditionsTransfer|null
-     */
     protected function addIdentifierToDynamicEntityConditionsTransfer(
         DynamicEntityTransfer $dynamicEntityTransfer,
         string $identifierFieldVisibleName,
@@ -545,11 +462,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityConditionsTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return string
-     */
     protected function getIdentifierVisibleName(DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): string
     {
         $identifier = $dynamicEntityConfigurationTransfer->getDynamicEntityDefinitionOrFail()->getIdentifierOrFail();
@@ -562,14 +474,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $identifier;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveRecord\ActiveRecordInterface $activeRecord
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Propel\Runtime\ActiveRecord\ActiveRecordInterface
-     */
     protected function resetFieldValues(
         ActiveRecordInterface $activeRecord,
         DynamicEntityTransfer $dynamicEntityTransfer,
@@ -660,14 +564,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return $dynamicEntityCollectionResponseTransfer->addError($errorMessageTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function addIdentifierIsNotFoundError(
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -697,12 +593,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param string $fieldName
-     *
-     * @return string|null
-     */
     protected function findFieldConditionValueByName(DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer, string $fieldName): ?string
     {
         foreach ($dynamicEntityConditionsTransfer->getFieldConditions() as $fieldCondition) {
@@ -714,22 +604,11 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         return null;
     }
 
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
     protected function convertSnakeCaseToCamelCase(string $input): string
     {
         return str_replace('_', '', ucwords($input, '_'));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $identifier
-     *
-     * @return string
-     */
     protected function generateIdentifierInfo(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         string $identifier
@@ -742,12 +621,6 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return bool
-     */
     protected function hasIdentifierCondition(
         DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer

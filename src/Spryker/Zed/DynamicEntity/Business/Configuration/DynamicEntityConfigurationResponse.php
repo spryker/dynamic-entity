@@ -22,9 +22,6 @@ class DynamicEntityConfigurationResponse implements DynamicEntityConfigurationRe
      */
     protected array $errorTransfers = [];
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function getDynamicEntityConfigurationTransfer(): DynamicEntityConfigurationTransfer
     {
         return $this->dynamicEntityConfigurationTransfer;
@@ -38,11 +35,6 @@ class DynamicEntityConfigurationResponse implements DynamicEntityConfigurationRe
         return $this->errorTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Spryker\Zed\DynamicEntity\Business\Configuration\DynamicEntityConfigurationResponseInterface
-     */
     public function setDynamicConfigurationTransfer(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationResponseInterface {
@@ -51,11 +43,6 @@ class DynamicEntityConfigurationResponse implements DynamicEntityConfigurationRe
         return $this;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ErrorTransfer $errorTransfer
-     *
-     * @return \Spryker\Zed\DynamicEntity\Business\Configuration\DynamicEntityConfigurationResponseInterface
-     */
     public function addErrorTransfer(
         ErrorTransfer $errorTransfer
     ): DynamicEntityConfigurationResponseInterface {

@@ -21,9 +21,6 @@ class DynamicEntityCollectionRequestTreeBranch implements DynamicEntityCollectio
      */
     protected array $childCollectionRequestTransfers = [];
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer
-     */
     public function getParentCollectionRequestTransfer(): DynamicEntityCollectionRequestTransfer
     {
         return $this->parentCollectionRequestTransfer;
@@ -37,11 +34,6 @@ class DynamicEntityCollectionRequestTreeBranch implements DynamicEntityCollectio
         return $this->childCollectionRequestTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Spryker\Zed\DynamicEntity\Business\Request\DynamicEntityCollectionRequestTreeBranchInterface
-     */
     public function setParentCollectionRequestTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): DynamicEntityCollectionRequestTreeBranchInterface {
@@ -50,11 +42,6 @@ class DynamicEntityCollectionRequestTreeBranch implements DynamicEntityCollectio
         return $this;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Spryker\Zed\DynamicEntity\Business\Request\DynamicEntityCollectionRequestTreeBranchInterface
-     */
     public function addChildCollectionRequestTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): DynamicEntityCollectionRequestTreeBranchInterface {

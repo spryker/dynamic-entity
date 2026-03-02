@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer;
 
 interface DynamicEntityDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function deleteEntityCollection(
         DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
     ): DynamicEntityCollectionResponseTransfer;

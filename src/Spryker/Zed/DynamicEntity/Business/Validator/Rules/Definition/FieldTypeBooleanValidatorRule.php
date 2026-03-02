@@ -46,9 +46,6 @@ class FieldTypeBooleanValidatorRule extends AbstractFildTypeValidatorRule implem
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getFieldType(): string
     {
         return static::FIELD_TYPE_BOOLEAN;

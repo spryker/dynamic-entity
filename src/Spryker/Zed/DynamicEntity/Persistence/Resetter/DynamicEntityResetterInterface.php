@@ -13,13 +13,6 @@ use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 
 interface DynamicEntityResetterInterface
 {
-    /**
-     * @param \Propel\Runtime\ActiveRecord\ActiveRecordInterface $activeRecord
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Propel\Runtime\ActiveRecord\ActiveRecordInterface
-     */
     public function resetNotProvidedFields(
         ActiveRecordInterface $activeRecord,
         DynamicEntityTransfer $dynamicEntityTransfer,

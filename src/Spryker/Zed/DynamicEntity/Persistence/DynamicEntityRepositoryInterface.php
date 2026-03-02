@@ -15,18 +15,8 @@ use Generated\Shared\Transfer\DynamicEntityCriteriaTransfer;
 
 interface DynamicEntityRepositoryInterface
 {
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     public function findDynamicEntityConfigurationByTableAlias(string $tableAlias): ?DynamicEntityConfigurationTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     public function getDynamicEntityConfigurationByDynamicEntityCriteria(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer;
@@ -44,11 +34,6 @@ interface DynamicEntityRepositoryInterface
         array $foreignKeyFieldMappingArray = []
     ): DynamicEntityCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     public function getDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer;

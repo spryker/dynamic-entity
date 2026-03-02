@@ -34,9 +34,6 @@ class FieldMappingValidator implements FieldMappingValidatorInterface
      */
     protected const KEY_CHILD_FIELD_NAME = 'child_field_name';
 
-    /**
-     * @param \Propel\Runtime\Map\DatabaseMap $databaseMap
-     */
     public function __construct(protected DatabaseMap $databaseMap)
     {
     }

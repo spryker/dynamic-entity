@@ -28,11 +28,6 @@ class DuplicateEntryExceptionToErrorMapper implements DatabaseExceptionToErrorMa
      */
     protected const DUPLICATED_ENTRY_REGEX = '/for key \'.*-(.*?)\'$/';
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return bool
-     */
     public function isApplicable(Exception $exception): bool
     {
         $previousException = $exception->getPrevious();
@@ -46,9 +41,6 @@ class DuplicateEntryExceptionToErrorMapper implements DatabaseExceptionToErrorMa
         return $code === static::ERROR_CODE_INTEGRITY_CONSTRAINT && $errorMatches === true;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorGlossaryKey(): string
     {
         return static::GLOSSARY_KEY_ERROR_ENTITY_NOT_PERSISTED_DUPLICATE_ENTRY;
@@ -66,11 +58,6 @@ class DuplicateEntryExceptionToErrorMapper implements DatabaseExceptionToErrorMa
         ];
     }
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return string|null
-     */
     public function mapExceptionToErrorMessage(Exception $exception): ?string
     {
         $previousException = $exception->getPrevious();

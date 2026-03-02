@@ -9,18 +9,9 @@ namespace Spryker\Zed\DynamicEntity\Dependency\External;
 
 interface DynamicEntityToConnectionInterface
 {
-    /**
-     * @return bool
-     */
     public function rollBack(): bool;
 
-    /**
-     * @return bool
-     */
     public function commit(): bool;
 
-    /**
-     * @return bool
-     */
     public function beginTransaction(): bool;
 }

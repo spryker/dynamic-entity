@@ -83,12 +83,6 @@ class FieldTypeValidatorRule implements ValidatorRuleInterface
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateFieldType(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer

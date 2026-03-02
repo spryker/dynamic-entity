@@ -60,11 +60,6 @@ class ResourceNameValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param string $resourceName
-     *
-     * @return bool
-     */
     protected function isResourceNameValid(string $resourceName): bool
     {
         return (bool)preg_match(static::RESOURCE_NAME_REGEX, $resourceName);

@@ -69,11 +69,6 @@ class DynamicEntityCreator implements DynamicEntityCreatorInterface
         $this->dynamicEntityPostCreatePlugins = $dynamicEntityPostCreatePlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function create(DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer): DynamicEntityCollectionResponseTransfer
     {
         $isInstancePoolingEnabled = $this->isInstancePoolingEnabled();
@@ -123,12 +118,6 @@ class DynamicEntityCreator implements DynamicEntityCreatorInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function executeDynamicEntityPostCreatePlugins(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
@@ -150,11 +139,6 @@ class DynamicEntityCreator implements DynamicEntityCreatorInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityPostEditResponseTransfer
-     */
     protected function executeDynamicEntityPostCreatePluginsForPostEditRequestTransfer(
         DynamicEntityPostEditRequestTransfer $dynamicEntityPostEditRequestTransfer
     ): DynamicEntityPostEditResponseTransfer {
@@ -172,12 +156,6 @@ class DynamicEntityCreator implements DynamicEntityCreatorInterface
         return $dynamicEntityPostEditResponseTransfer ?: new DynamicEntityPostEditResponseTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     * @param \Spryker\Zed\DynamicEntity\Business\Configuration\DynamicEntityConfigurationResponseInterface $dynamicEntityConfigurationResponse
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function mergeErrors(
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer,
         DynamicEntityConfigurationResponseInterface $dynamicEntityConfigurationResponse
@@ -189,12 +167,6 @@ class DynamicEntityCreator implements DynamicEntityCreatorInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $mainDynamicEntityCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $currentDynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function mergeResponses(
         DynamicEntityCollectionResponseTransfer $mainDynamicEntityCollectionResponseTransfer,
         DynamicEntityCollectionResponseTransfer $currentDynamicEntityCollectionResponseTransfer

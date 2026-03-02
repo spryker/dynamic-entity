@@ -43,14 +43,6 @@ class DynamicEntityInstaller implements DynamicEntityInstallerInterface
      */
     protected const MESSAGE_FILE_CONTAINS_INVALID_JSON = 'File contains invalid JSON: %s';
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\DynamicEntityConfig $dynamicEntityConfig
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityRepositoryInterface $dynamicEntityRepository
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $dynamicEntityMapper
-     * @param \Spryker\Zed\DynamicEntity\Business\Installer\Validator\FieldMappingValidatorInterface $fieldMappingValidator
-     * @param \Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityConfiguration\DynamicEntityConfigurationColumnDetailProviderInterface $dynamicEntityConfigurationColumnDetailProvider
-     */
     public function __construct(
         protected DynamicEntityConfig $dynamicEntityConfig,
         protected DynamicEntityRepositoryInterface $dynamicEntityRepository,
@@ -61,9 +53,6 @@ class DynamicEntityInstaller implements DynamicEntityInstallerInterface
     ) {
     }
 
-    /**
-     * @return void
-     */
     public function install(): void
     {
         $this->getTransactionHandler()->handleTransaction(function (): void {

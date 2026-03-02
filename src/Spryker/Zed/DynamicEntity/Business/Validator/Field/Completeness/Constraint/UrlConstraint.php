@@ -27,22 +27,11 @@ class UrlConstraint implements ConstraintInterface
      */
     protected const RELATIVE_URL_PATTERN = '/^\/$|^\/[a-z0-9\-._~%!$&\'()*+,;=@]+(\/[a-zA-Z0-9\-._~%!$&\'()*+,;=:@]+)*/';
 
-    /**
-     * @param string $constraintName
-     *
-     * @return bool
-     */
     public function isApplicable(string $constraintName): bool
     {
         return $constraintName === static::CONSTRAINT_URL;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $fieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValid(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityFieldDefinitionTransfer $fieldDefinitionTransfer
@@ -50,9 +39,6 @@ class UrlConstraint implements ConstraintInterface
         return preg_match(static::RELATIVE_URL_PATTERN, $dynamicEntityTransfer->getFields()[$fieldDefinitionTransfer->getFieldVisibleName()]) === 1;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorMessage(): string
     {
         return static::GLOSSARY_KEY_INVALID_URL;

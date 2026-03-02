@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransf
 
 interface DynamicEntityConfigurationUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function updateDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer;

@@ -32,9 +32,6 @@ class EditableRelationValidator implements DynamicEntityValidatorInterface
      */
     protected DynamicEntityIndexerInterface $dynamicEntityIndexer;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $dynamicEntityIndexer
-     */
     public function __construct(DynamicEntityIndexerInterface $dynamicEntityIndexer)
     {
         $this->dynamicEntityIndexer = $dynamicEntityIndexer;

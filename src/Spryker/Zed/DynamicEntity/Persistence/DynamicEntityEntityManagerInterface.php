@@ -18,59 +18,26 @@ use Generated\Shared\Transfer\DynamicEntityTransfer;
 
 interface DynamicEntityEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function createDynamicEntityConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function updateDynamicEntityConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         string $errorPath
     ): DynamicEntityCollectionResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createChildDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer,
         string $errorPath
     ): DynamicEntityCollectionResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -79,15 +46,6 @@ interface DynamicEntityEntityManagerInterface
         string $errorPath
     ): DynamicEntityCollectionResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateChildDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer,
@@ -109,12 +67,6 @@ interface DynamicEntityEntityManagerInterface
         array $indexedChildRelations
     ): DynamicEntityConfigurationCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function deleteDynamicEntity(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer

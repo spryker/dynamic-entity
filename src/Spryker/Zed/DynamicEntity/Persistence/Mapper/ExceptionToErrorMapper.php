@@ -41,13 +41,6 @@ class ExceptionToErrorMapper implements ExceptionToErrorMapperInterface
         $this->databaseExceptionToErrorMappers = $databaseExceptionToErrorMappers;
     }
 
-    /**
-     * @param \Exception $exception
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function map(
         Exception $exception,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -80,12 +73,6 @@ class ExceptionToErrorMapper implements ExceptionToErrorMapperInterface
         return null;
     }
 
-    /**
-     * @param string $errorPath
-     * @param string|null $duplicatedKey
-     *
-     * @return string
-     */
     protected function appendMappedExceptionToKeyToErrorPath(string $errorPath, ?string $duplicatedKey): string
     {
         if ($duplicatedKey === null) {

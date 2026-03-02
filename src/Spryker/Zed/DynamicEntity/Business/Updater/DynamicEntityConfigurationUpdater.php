@@ -29,10 +29,6 @@ class DynamicEntityConfigurationUpdater implements DynamicEntityConfigurationUpd
      */
     protected DynamicEntityEntityManagerInterface $dynamicEntityManager;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityEntityManagerInterface $dynamicEntityManager
-     */
     public function __construct(
         DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator,
         DynamicEntityEntityManagerInterface $dynamicEntityManager
@@ -41,11 +37,6 @@ class DynamicEntityConfigurationUpdater implements DynamicEntityConfigurationUpd
         $this->dynamicEntityManager = $dynamicEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function updateDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer {
@@ -96,11 +87,6 @@ class DynamicEntityConfigurationUpdater implements DynamicEntityConfigurationUpd
         return $persistedDynamicEntityConfigurationTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFields(DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer): void
     {
         $dynamicEntityConfigurationCollectionRequestTransfer->requireDynamicEntityConfigurations();
@@ -116,11 +102,6 @@ class DynamicEntityConfigurationUpdater implements DynamicEntityConfigurationUpd
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFieldsDynamicEntityDefinitions(DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): void
     {
         $dynamicEntityConfigurationTransfer->requireDynamicEntityDefinition();

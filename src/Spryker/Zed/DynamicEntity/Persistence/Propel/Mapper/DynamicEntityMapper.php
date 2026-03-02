@@ -64,20 +64,11 @@ class DynamicEntityMapper
      */
     protected DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Dependency\Service\DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding
-     */
     public function __construct(DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding)
     {
         $this->serviceUtilEncoding = $serviceUtilEncoding;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration $dynamicEntityConfiguration
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function mapDynamicEntityConfigurationToTransfer(
         SpyDynamicEntityConfiguration $dynamicEntityConfiguration,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -94,12 +85,6 @@ class DynamicEntityMapper
         return $dynamicEntityConfigurationTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration $dynamicEntityConfigurationEntity
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function mapDynamicEntityConfigurationTransferToEntity(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         SpyDynamicEntityConfiguration $dynamicEntityConfigurationEntity
@@ -152,13 +137,6 @@ class DynamicEntityMapper
         return $dynamicEntityCollectionTransfer;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveRecord\ActiveRecordInterface $entityRecord
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityTransfer
-     */
     public function mapEntityRecordToDynamicEntityTransfer(
         ActiveRecordInterface $entityRecord,
         DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer,
@@ -201,12 +179,6 @@ class DynamicEntityMapper
         return $dynamicEntityConfigurationCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Propel\Runtime\ActiveRecord\ActiveRecordInterface $activeRecord
-     *
-     * @return \Propel\Runtime\ActiveRecord\ActiveRecordInterface|null
-     */
     public function mapDynamicEntityTransferToDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         ActiveRecordInterface $activeRecord
@@ -219,12 +191,6 @@ class DynamicEntityMapper
         return $activeRecord;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration $dynamicEntityConfiguration
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function mapDynamicEntityConfigurationCollectionToDynamicEntityConfigurationTransfers(
         SpyDynamicEntityConfiguration $dynamicEntityConfiguration,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -242,13 +208,6 @@ class DynamicEntityMapper
         return $dynamicEntityConfigurationTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration $dynamicEntityConfigurationEntity
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelation $dynamicEntityRelationConfigurationRelation
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     protected function mapDynamicEntityConfigurationEntityRelationToDynamicEntityConfigurationTransfer(
         SpyDynamicEntityConfiguration $dynamicEntityConfigurationEntity,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -276,12 +235,6 @@ class DynamicEntityMapper
         return $dynamicEntityConfigurationTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelationFieldMapping $fieldMapping
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer
-     */
     protected function mapDynamicEntityConfigurationRelationToDynamicEntityConfigurationTransfer(
         SpyDynamicEntityConfigurationRelationFieldMapping $fieldMapping,
         DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
@@ -297,32 +250,16 @@ class DynamicEntityMapper
         return $dynamicEntityConfigurationRelationTransfer;
     }
 
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
     protected function convertSnakeCaseToCamelCase(string $input): string
     {
         return str_replace('_', '', ucwords($input, '_'));
     }
 
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
     protected function getSetFieldMethod(string $input): string
     {
         return sprintf(static::SET_METHOD_PLACEHOLDER, $this->convertSnakeCaseToCamelCase($input));
     }
 
-    /**
-     * @param string $definition
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer
-     */
     protected function mapDynamicEntityDefinitionToDynamicEntityDefinitionTransfer(
         string $definition,
         DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
@@ -394,23 +331,11 @@ class DynamicEntityMapper
         return $dynamicEntityFields;
     }
 
-    /**
-     * @param string $type
-     * @param mixed $value
-     *
-     * @return mixed
-     */
     protected function castTypes(string $type, mixed $value): mixed
     {
         return ($type === static::TYPE_INTEGER && $value !== null) ? (int)$value : $value;
     }
 
-    /**
-     * @param string $identifier
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     *
-     * @return string
-     */
     protected function getIdentifierVisibleName(string $identifier, DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer): string
     {
         foreach ($dynamicEntityDefinitionTransfer->getFieldDefinitions() as $fieldDefinitionTransfer) {

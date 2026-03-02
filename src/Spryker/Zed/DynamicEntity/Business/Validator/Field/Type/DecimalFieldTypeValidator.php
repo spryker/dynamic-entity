@@ -22,11 +22,6 @@ class DecimalFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
      */
     protected const INTEGER_FIELD_TYPE = 'decimal';
 
-    /**
-     * @param mixed $fieldValue
-     *
-     * @return bool
-     */
     public function isValidType(mixed $fieldValue): bool
     {
         if (!preg_match(static::REGEX_DECIMAL, $fieldValue)) {
@@ -36,12 +31,6 @@ class DecimalFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
         return true;
     }
 
-    /**
-     * @param mixed $fieldValue
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValidValue(mixed $fieldValue, DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer): bool
     {
         $validation = $dynamicEntityFieldDefinitionTransfer->getValidation();
@@ -53,21 +42,11 @@ class DecimalFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
         return $this->validateDecimal($fieldValue, $validation->getPrecision(), $validation->getScale() ?? 0);
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return static::INTEGER_FIELD_TYPE;
     }
 
-    /**
-     * @param string $decimalValue
-     * @param int $precision
-     * @param int $scale
-     *
-     * @return bool
-     */
     protected function validateDecimal(string $decimalValue, int $precision, int $scale): bool
     {
         if (!preg_match(static::REGEX_DECIMAL, $decimalValue)) {

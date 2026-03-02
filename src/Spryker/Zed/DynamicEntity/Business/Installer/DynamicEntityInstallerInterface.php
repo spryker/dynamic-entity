@@ -9,8 +9,5 @@ namespace Spryker\Zed\DynamicEntity\Business\Installer;
 
 interface DynamicEntityInstallerInterface
 {
-    /**
-     * @return void
-     */
     public function install(): void;
 }

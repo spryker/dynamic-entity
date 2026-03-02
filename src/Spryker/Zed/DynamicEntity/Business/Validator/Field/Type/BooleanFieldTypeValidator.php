@@ -17,30 +17,16 @@ class BooleanFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
      */
     protected const BOOLEAN_FIELD_TYPE = 'boolean';
 
-    /**
-     * @param mixed $fieldValue
-     *
-     * @return bool
-     */
     public function isValidType(mixed $fieldValue): bool
     {
         return is_bool($fieldValue) === true;
     }
 
-    /**
-     * @param mixed $fieldValue
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValidValue(mixed $fieldValue, DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer): bool
     {
         return $this->isValidType($fieldValue);
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return static::BOOLEAN_FIELD_TYPE;

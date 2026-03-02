@@ -16,16 +16,8 @@ interface DatabaseExceptionToErrorMapperInterface
      */
     public const ERROR_PATH = 'errorPath';
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return bool
-     */
     public function isApplicable(Exception $exception): bool;
 
-    /**
-     * @return string
-     */
     public function getErrorGlossaryKey(): string;
 
     /**
@@ -35,10 +27,5 @@ interface DatabaseExceptionToErrorMapperInterface
      */
     public function getErrorGlossaryParams(array $params): array;
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return string|null
-     */
     public function mapExceptionToErrorMessage(Exception $exception): ?string;
 }

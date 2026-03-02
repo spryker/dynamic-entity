@@ -67,14 +67,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
      */
     protected DynamicEntityErrorPathResolverInterface $errorPathResolver;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityComprehensiveValidatorInterface $validator
-     * @param \Spryker\Zed\DynamicEntity\Business\Filter\DynamicEntityFilterInterface $filter
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $indexer
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $mapper
-     * @param \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface $errorPathResolver
-     */
     public function __construct(
         DynamicEntityEntityManagerInterface $entityManager,
         DynamicEntityComprehensiveValidatorInterface $validator,
@@ -91,14 +83,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
         $this->errorPathResolver = $errorPathResolver;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -155,14 +139,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -432,13 +408,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $parentDynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $childDynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityRelationFieldMappingTransfer $dynamicEntityRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityTransfer
-     */
     protected function addParentForeignKeyToChildFields(
         DynamicEntityTransfer $parentDynamicEntityTransfer,
         DynamicEntityTransfer $childDynamicEntityTransfer,
@@ -453,13 +422,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $childDynamicEntityConfiguration
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $parentDynamicEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConditionsTransfer
-     */
     protected function addParentForeignKeyToConditionsTransfer(
         DynamicEntityConditionsTransfer $dynamicEntityConditionsTransfer,
         DynamicEntityConfigurationRelationTransfer $childDynamicEntityConfiguration,
@@ -497,13 +459,6 @@ class DynamicEntityWriter implements DynamicEntityWriterInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function addMissingIdendifierErrorToResponseTransfer(
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,

@@ -28,11 +28,6 @@ class NotNullViolationExceptionToErrorMapper implements DatabaseExceptionToError
      */
     protected const NOT_NULL_KEY_REGEX = '/DETAIL:  Key \((.*?)\)/';
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return bool
-     */
     public function isApplicable(Exception $exception): bool
     {
         if ($exception->getPrevious() === null) {
@@ -44,9 +39,6 @@ class NotNullViolationExceptionToErrorMapper implements DatabaseExceptionToError
         return $code === static::ERROR_CODE_NOT_NULL_VIOLATION;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorGlossaryKey(): string
     {
         return static::GLOSSARY_KEY_ERROR_ENTITY_NOT_PERSISTED_NOT_NULL;
@@ -64,11 +56,6 @@ class NotNullViolationExceptionToErrorMapper implements DatabaseExceptionToError
         ];
     }
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return string|null
-     */
     public function mapExceptionToErrorMessage(Exception $exception): ?string
     {
         $previousException = $exception->getPrevious();

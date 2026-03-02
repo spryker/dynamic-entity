@@ -53,12 +53,6 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
      */
     protected DynamicEntityRelationConfigurationTreeBuilderInterface $dynamicEntityRelationTreeBuilder;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityRepositoryInterface $repository
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $dynamicEntityMapper
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationTreeValidatorInterface $dynamicEntityConfigurationTreeValidator
-     * @param \Spryker\Zed\DynamicEntity\Business\Builder\DynamicEntityRelationConfigurationTreeBuilderInterface $dynamicEntityRelationTreeBuilder
-     */
     public function __construct(
         DynamicEntityRepositoryInterface $repository,
         DynamicEntityMapperInterface $dynamicEntityMapper,
@@ -71,11 +65,6 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
         $this->dynamicEntityRelationTreeBuilder = $dynamicEntityRelationTreeBuilder;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
-     */
     public function getEntityCollection(DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer): DynamicEntityCollectionTransfer
     {
         $dynamicEntityConfigurationCollectionTransfer = $this->repository->getDynamicEntityConfigurationByDynamicEntityCriteria(
@@ -149,11 +138,6 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
         return $dynamicEntityConfigurationResponse;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     protected function getDynamicEntityConfigurationCollection(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer {
@@ -162,12 +146,6 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
-     */
     protected function getEntityCollectionByConfiguration(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -226,11 +204,6 @@ class DynamicEntityReader implements DynamicEntityReaderInterface
         return $dynamicEntityCollectionTransfer;
     }
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer
-     */
     protected function createConfigurationNotFoundErrorTransfer(string $tableAlias): ErrorTransfer
     {
         return (new ErrorTransfer())

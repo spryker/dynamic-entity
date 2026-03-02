@@ -26,12 +26,6 @@ abstract class AbstractDynamicEntityFilter
         array $filteredFields
     ): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityTransfer
-     */
     public function filter(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         DynamicEntityTransfer $dynamicEntityTransfer

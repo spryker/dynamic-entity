@@ -127,9 +127,6 @@ class DynamicEntityFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -142,9 +139,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsNotEmptyCollection(): void
     {
         //Arrange
@@ -160,9 +154,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotContains('dynamicEntityDefinition', $dynamicEntityCollectionTransfer->getDynamicEntities()[$totalEntitiesCount - 1]->getFields());
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsFilteredCollection(): void
     {
         //Arrange
@@ -177,9 +168,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotContains('dynamicEntityDefinition', $dynamicEntityCollectionTransfer->getDynamicEntities()[0]->getFields());
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsFilteredCollectionByMultipleValues(): void
     {
         //Arrange
@@ -201,9 +189,6 @@ class DynamicEntityFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsEmptyCollection(): void
     {
         //Arrange
@@ -216,9 +201,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEmpty($dynamicEntityCollectionTransfer->getDynamicEntities());
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsCollectionWithoutChild(): void
     {
         // Arrange
@@ -240,9 +222,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEmpty($dynamicEntityTranfer->getChildRelations());
     }
 
-    /**
-     * @return void
-     */
     public function testGetDynamicEntityCollectionReturnsCollectionWithChildRelations(): void
     {
         // Arrange
@@ -271,9 +250,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals(1, count($dynamicEntityTranfer->getChildRelations()[0]->getDynamicEntities()));
     }
 
-    /**
-     * @return void
-     */
     public function testPutDynamicEntityCollectionUpdatesCollectionWithChildRelations(): void
     {
         // Arrange
@@ -340,9 +316,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testPutDynamicEntityCollectionCreatesNewChildEntity(): void
     {
         // Arrange
@@ -407,9 +380,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityCollectionCreatesTheRecord(): void
     {
         //Arrange
@@ -434,9 +404,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals(static::FOO_TABLE_ALIAS_2, $dynamicConfigurationEntity->getTableAlias());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityCollectionCreatesTheRecordWithDefaultFieldValueIfItIsNotPassed(): void
     {
         //Arrange
@@ -460,9 +427,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals(false, $dynamicConfigurationEntity->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityCollectionReturnErrorIfInvalidDataTypeIsPassed(): void
     {
         //Arrange
@@ -488,9 +452,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityCollectionReturnErrorIfInvalidFieldNameIsProvided(): void
     {
         //Arrange
@@ -516,9 +477,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityConfigurationCollectionExecutesDynamicEntityPostCreatePlugins(): void
     {
         // Arrange
@@ -551,9 +509,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->dynamicEntityFacade->createDynamicEntityCollection($dynamicEntityCollectionRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionUpdatesTheRecord(): void
     {
         //Arrange
@@ -581,9 +536,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals(static::FOO_TABLE_NAME, $updatedDynamicConfigurationEntity->getTableName());
     }
 
-    /**
-     * @return void
-     */
     public function testPatchDynamicEntityCollectionUpdatesCollectionWithChildRelations(): void
     {
         // Arrange
@@ -629,9 +581,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotEquals($dynamicConfigurationEntity->getTableName(), $updatedDynamicConfigurationEntity->getTableName());
     }
 
-    /**
-     * @return void
-     */
     public function testPatchDynamicEntityCollectionWithChildRelationsHasErrorsWhenWrongData(): void
     {
         // Arrange
@@ -668,9 +617,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testPutDynamicEntityCollectionWithChildRelationsHasErrorsWhenWrongData(): void
     {
         // Arrange
@@ -707,9 +653,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionReturnsErrorIfInvalidDataTypeIsPassed(): void
     {
         //Arrange
@@ -735,9 +678,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionReturnsErrorIfInvalidFieldNameIsProvided(): void
     {
         //Arrange
@@ -763,9 +703,6 @@ class DynamicEntityFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionDoesNotUpdateIfFieldIsNotEditable(): void
     {
         //Arrange
@@ -797,9 +734,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($dynamicConfigurationEntity->getIsActive(), $updatedDynamicConfigurationEntity->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityConfigurationCollectionExecutesDynamicEntityPostUpdatePlugins(): void
     {
         // Arrange
@@ -832,9 +766,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->dynamicEntityFacade->updateDynamicEntityCollection($dynamicEntityCollectionRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetConfigurationReturnCollectionOfActiveConfigurations(): void
     {
         //Arrange
@@ -912,9 +843,6 @@ class DynamicEntityFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityCollectionCreatesTheRecordAndReturnsValidReponseTransfer(): void
     {
         //Arrange
@@ -944,9 +872,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($dynamicEntityConfigurationEntity->getDefinition(), $dynamicEntityCollectionResponseTransfer->getDynamicEntities()[0]->getFields()['definition']);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionUpdatesTheRecordAndReturnsCorrectResponseTransfer(): void
     {
         //Arrange
@@ -977,9 +902,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($updatedDynamicConfigurationEntity->getDefinition(), $updateCollectionResponseFields['definition']);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityCollectionUpdatesTheRecordWithNonDefaultIdentifierVisibleName(): void
     {
         //Arrange
@@ -1012,9 +934,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($updatedDynamicConfigurationEntity->getTableName(), $dynamicEntityCollectionResponseTransfer->getDynamicEntities()[0]->getFields()['table_name']);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityConfigurationCollectionWillReturnCollectionWithoutErrors(): void
     {
         // Arrange
@@ -1035,9 +954,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($requestDynamicEntityConfigurationTransfer->getDynamicEntityDefinition(), $responseDynamicEntityConfigurationTransfer->getDynamicEntityDefinition());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateDynamicEntityConfigurationCollectionWillReturnCollectionWithoutErrorsAndAssertDatabaseEntity(): void
     {
         // Arrange
@@ -1059,9 +975,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($this->tester->getExpectedDefinition(), $entity->getDefinition());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityConfigurationCollectionWillReturnCollectionWithCorrectTransferWithoutErrors(): void
     {
         // Arrange
@@ -1081,9 +994,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals(static::BAR_TABLE_ALIAS, $responseDynamicEntityConfigurationTransfer->getTableAlias());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicEntityConfigurationCollectionWillReturnCollectionWithCorrectTransferWithoutErrorsAndAssertDatabaseEntity(): void
     {
         // Arrange
@@ -1105,11 +1015,6 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertEquals($this->tester->getExpectedDefinition(), $entity->getDefinition());
     }
 
-    /**
-     * @param string $configurationFilename
-     *
-     * @return void
-     */
     protected function createBusinessFactoryMock(string $configurationFilename): void
     {
         $this->tester->mockFactoryMethod('getConfig', $this->createConfigMock($configurationFilename));

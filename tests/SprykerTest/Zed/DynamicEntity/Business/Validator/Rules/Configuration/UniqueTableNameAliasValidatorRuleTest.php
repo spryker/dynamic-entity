@@ -34,9 +34,6 @@ class UniqueTableNameAliasValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateEmptyCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -51,9 +48,6 @@ class UniqueTableNameAliasValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -70,9 +64,6 @@ class UniqueTableNameAliasValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCreateCollectionWillReturnWithError(): void
     {
         // Arrange
@@ -98,9 +89,6 @@ class UniqueTableNameAliasValidatorRuleTest extends Unit
         $this->assertSame('spy_test_table', $errorTransfer->getEntityIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCreateCollectionWillReturnWithErrors(): void
     {
         // Arrange

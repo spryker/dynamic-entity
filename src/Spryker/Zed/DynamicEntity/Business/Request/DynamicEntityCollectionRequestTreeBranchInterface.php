@@ -11,9 +11,6 @@ use Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer;
 
 interface DynamicEntityCollectionRequestTreeBranchInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer
-     */
     public function getParentCollectionRequestTransfer(): DynamicEntityCollectionRequestTransfer;
 
     /**
@@ -21,20 +18,10 @@ interface DynamicEntityCollectionRequestTreeBranchInterface
      */
     public function getChildCollectionRequestTransfers(): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return self
-     */
     public function setParentCollectionRequestTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): self;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return self
-     */
     public function addChildCollectionRequestTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): self;

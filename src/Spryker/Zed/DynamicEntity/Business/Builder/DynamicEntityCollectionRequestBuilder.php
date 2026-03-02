@@ -28,9 +28,6 @@ class DynamicEntityCollectionRequestBuilder implements DynamicEntityCollectionRe
      */
     protected DynamicEntityMapperInterface $dynamicEntityMapper;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $dynamicEntityMapper
-     */
     public function __construct(DynamicEntityMapperInterface $dynamicEntityMapper)
     {
         $this->dynamicEntityMapper = $dynamicEntityMapper;

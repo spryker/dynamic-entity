@@ -33,11 +33,6 @@ class DynamicEntityConfigurationValidator implements DynamicEntityConfigurationV
         $this->definitionValidatorRules = $definitionValidatorRules;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function validate(
         DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer {
@@ -74,12 +69,6 @@ class DynamicEntityConfigurationValidator implements DynamicEntityConfigurationV
         return $dynamicEntityConfigurationCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     protected function mergeErrors(
         DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer

@@ -29,11 +29,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
      */
     protected const TEMPLATE_TABLE_ALIAS_CONDITION = '(table_alias = ? OR parentConfigurationRelation.name IN (%s) OR childConfigurationRelation.name IN (%s))';
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     public function findDynamicEntityConfigurationByTableAlias(string $tableAlias): ?DynamicEntityConfigurationTransfer
     {
         $dynamicEntityConfiguration = $this->getFactory()
@@ -51,11 +46,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
             ->mapDynamicEntityConfigurationToTransfer($dynamicEntityConfiguration, new DynamicEntityConfigurationTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     public function getDynamicEntityConfigurationByDynamicEntityCriteria(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer {
@@ -130,11 +120,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     public function getDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer {
@@ -176,11 +161,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
             ->mapDynamicEntityConfigurationsToCollectionTransfer($dynamicEntityConfigurations, new DynamicEntityConfigurationCollectionTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     protected function getDynamicEntityConfigurationTransfersWithoutRelationChains(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
     ): DynamicEntityConfigurationCollectionTransfer {
@@ -196,12 +176,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
             ->addDynamicEntityConfiguration($dynamicEntityConfigurationTransfer);
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery
-     */
     protected function applyDynamicEntityConfigurationCriteria(
         SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery,
         DynamicEntityConfigurationCriteriaTransfer $dynamicEntityConfigurationCriteriaTransfer
@@ -226,12 +200,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
         return $dynamicEntityConfigurationsQuery;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationConditionsTransfer $dynamicEntityConfigurationConditionsTransfer
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery
-     */
     protected function addCreatedAtFilter(
         SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery,
         DynamicEntityConfigurationConditionsTransfer $dynamicEntityConfigurationConditionsTransfer
@@ -256,12 +224,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
         return $dynamicEntityConfigurationsQuery;
     }
 
-    /**
-     * @param \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationConditionsTransfer $dynamicEntityConfigurationConditionsTransfer
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery
-     */
     protected function addUpdatedAtFilter(
         SpyDynamicEntityConfigurationQuery $dynamicEntityConfigurationsQuery,
         DynamicEntityConfigurationConditionsTransfer $dynamicEntityConfigurationConditionsTransfer
@@ -322,12 +284,6 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
         return $dynamicEntityQuery->find()->getData();
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $dynamicEntityQuery
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function buildQueryWithPagination(
         ModelCriteria $dynamicEntityQuery,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer

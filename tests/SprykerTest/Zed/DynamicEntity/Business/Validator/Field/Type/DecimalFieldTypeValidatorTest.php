@@ -30,9 +30,6 @@ use Spryker\Zed\DynamicEntity\Business\Validator\Field\Type\DecimalFieldTypeVali
  */
 class DecimalFieldTypeValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testWillReturnValidatorType(): void
     {
         // Arrange
@@ -42,9 +39,6 @@ class DecimalFieldTypeValidatorTest extends Unit
         $this->assertSame('decimal', $validator->getType());
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnTrue(): void
     {
         // Arrange
@@ -57,9 +51,6 @@ class DecimalFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidType(1233));
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnFalse(): void
     {
         // Arrange
@@ -71,9 +62,6 @@ class DecimalFieldTypeValidatorTest extends Unit
         $this->assertFalse($validator->isValidType('string.9999999'));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWithValidationRulesWillReturnTrue(): void
     {
         // Arrange
@@ -90,9 +78,6 @@ class DecimalFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidValue('0.0000', $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     protected function createDecimalFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new DecimalFieldTypeValidator(
@@ -101,17 +86,11 @@ class DecimalFieldTypeValidatorTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface
-     */
     protected function createDynamicEntityIndexerMock(): DynamicEntityIndexerInterface
     {
         return $this->getMockBuilder(DynamicEntityIndexerInterface::class)->getMock();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface
-     */
     protected function createDynamicEntityErrorPathResolverMock(): DynamicEntityErrorPathResolverInterface
     {
         return $this->getMockBuilder(DynamicEntityErrorPathResolverInterface::class)->getMock();

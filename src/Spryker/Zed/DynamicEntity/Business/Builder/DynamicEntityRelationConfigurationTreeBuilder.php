@@ -25,12 +25,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
      */
     protected const FIELD_RELATION_NAME = 'relationName';
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     public function buildDynamicEntityConfigurationTransferTree(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
@@ -143,12 +137,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
         return $currentDynamicEntityConfigurationTranfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $currentDynamicEntityConfigurationTranfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     protected function findDynamicEntityConfigurationTransferDefinition(
         DynamicEntityConfigurationTransfer $currentDynamicEntityConfigurationTranfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
@@ -162,12 +150,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
         return null;
     }
 
-    /**
-     * @param string $relationName
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer|null
-     */
     protected function findDynamicEntityConfigurationRelationTransfer(
         string $relationName,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -181,12 +163,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $childRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     protected function setChildRelationIfNotExists(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         DynamicEntityConfigurationRelationTransfer $childRelationTransfer
@@ -202,12 +178,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
         return $dynamicEntityConfigurationTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollection
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     protected function findDynamicEntityConfigurationEntityByTableAlias(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollection,
         string $tableAlias
@@ -223,11 +193,6 @@ class DynamicEntityRelationConfigurationTreeBuilder implements DynamicEntityRela
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     protected function cloneConfigurationWithoutRelations(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
     ): DynamicEntityConfigurationTransfer {

@@ -28,9 +28,6 @@ class DynamicEntityCollectionRequestBuilderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testBuildRelationChainsFromDynamicEntityCollectionRequestGeneratesCorrectChain(): void
     {
         //Arrange

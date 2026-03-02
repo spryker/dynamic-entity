@@ -14,23 +14,11 @@ use Generated\Shared\Transfer\ErrorTransfer;
 
 interface DynamicEntityConfigurationTreeValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
     ): ?ErrorTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityCollectionRequestByDynamicEntityConfigurationCollection(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer

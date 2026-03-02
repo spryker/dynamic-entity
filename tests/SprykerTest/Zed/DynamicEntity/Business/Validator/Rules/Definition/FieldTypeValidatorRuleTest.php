@@ -34,9 +34,6 @@ class FieldTypeValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateEmptyCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -50,9 +47,6 @@ class FieldTypeValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -66,9 +60,6 @@ class FieldTypeValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithErrors(): void
     {
         // Arrange
@@ -86,9 +77,6 @@ class FieldTypeValidatorRuleTest extends Unit
         $this->assertEquals('number', $errorTransfer->getEntityIdentifier());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer
-     */
     protected function createDynamicEntityConfigurationCollectionRequestTransfer(): DynamicEntityConfigurationCollectionRequestTransfer
     {
         $dynamicEntityConfigurationCollectionRequestTransfer = $this->tester->createDynamicEntityConfigurationCollectionRequestTransfer();

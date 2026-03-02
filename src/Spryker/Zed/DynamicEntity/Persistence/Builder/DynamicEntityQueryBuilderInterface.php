@@ -13,11 +13,6 @@ use Propel\Runtime\ActiveQuery\ModelCriteria;
 
 interface DynamicEntityQueryBuilderInterface
 {
-    /**
-     * @param string $tableName
-     *
-     * @return string|null
-     */
     public function getEntityClassName(string $tableName): ?string;
 
     /**
@@ -29,11 +24,6 @@ interface DynamicEntityQueryBuilderInterface
      */
     public function assertEntityClassNameExists(string $tableName): string;
 
-    /**
-     * @param string $tableName
-     *
-     * @return string
-     */
     public function getEntityQueryClass(string $tableName): string;
 
     /**

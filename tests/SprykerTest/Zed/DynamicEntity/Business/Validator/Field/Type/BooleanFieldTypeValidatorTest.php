@@ -29,9 +29,6 @@ use Spryker\Zed\DynamicEntity\Business\Validator\Field\Type\BooleanFieldTypeVali
  */
 class BooleanFieldTypeValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testWillReturnValidatorType(): void
     {
         $validator = $this->createBooleanFieldTypeValidator();
@@ -39,9 +36,6 @@ class BooleanFieldTypeValidatorTest extends Unit
         $this->assertSame('boolean', $validator->getType());
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnTrue(): void
     {
         $validator = $this->createBooleanFieldTypeValidator();
@@ -50,9 +44,6 @@ class BooleanFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidType(false));
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnFalse(): void
     {
         $validator = $this->createBooleanFieldTypeValidator();
@@ -63,9 +54,6 @@ class BooleanFieldTypeValidatorTest extends Unit
         $this->assertFalse($validator->isValidType('0'));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWillReturnTrue(): void
     {
         // Arrange
@@ -77,9 +65,6 @@ class BooleanFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidValue(false, $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWillReturnFalse(): void
     {
         // Arrange
@@ -93,9 +78,6 @@ class BooleanFieldTypeValidatorTest extends Unit
         $this->assertFalse($validator->isValidValue('0', $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     protected function createBooleanFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new BooleanFieldTypeValidator(
@@ -104,17 +86,11 @@ class BooleanFieldTypeValidatorTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface
-     */
     protected function createDynamicEntityIndexerMock(): DynamicEntityIndexerInterface
     {
         return $this->getMockBuilder(DynamicEntityIndexerInterface::class)->getMock();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface
-     */
     protected function createDynamicEntityErrorPathResolverMock(): DynamicEntityErrorPathResolverInterface
     {
         return $this->getMockBuilder(DynamicEntityErrorPathResolverInterface::class)->getMock();

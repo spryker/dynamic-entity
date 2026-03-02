@@ -43,10 +43,6 @@ abstract class AbstractFieldTypeValidator
      */
     protected DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $dynamicEntityIndexer
-     * @param \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver
-     */
     public function __construct(
         DynamicEntityIndexerInterface $dynamicEntityIndexer,
         DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver
@@ -85,24 +81,10 @@ abstract class AbstractFieldTypeValidator
         ));
     }
 
-    /**
-     * @param mixed $fieldValue
-     *
-     * @return bool
-     */
     abstract public function isValidType(mixed $fieldValue): bool;
 
-    /**
-     * @param mixed $fieldValue
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return bool
-     */
     abstract public function isValidValue(mixed $fieldValue, DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer): bool;
 
-    /**
-     * @return string
-     */
     abstract public function getType(): string;
 
     /**
@@ -194,11 +176,6 @@ abstract class AbstractFieldTypeValidator
         return $errorTransfers;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
     protected function isSupportedType(string $type): bool
     {
         return $type === $this->getType();

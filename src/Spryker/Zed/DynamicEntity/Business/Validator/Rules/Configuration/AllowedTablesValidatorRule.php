@@ -41,10 +41,6 @@ class AllowedTablesValidatorRule implements ValidatorRuleInterface
      */
     protected DisallowedTablesReaderInterface $disallowedTablesReader;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\DynamicEntityConfig $dynamicEntityConfig
-     * @param \Spryker\Zed\DynamicEntity\Business\Reader\DisallowedTablesReaderInterface $disallowedTablesReader
-     */
     public function __construct(DynamicEntityConfig $dynamicEntityConfig, DisallowedTablesReaderInterface $disallowedTablesReader)
     {
         $this->dynamicEntityConfig = $dynamicEntityConfig;

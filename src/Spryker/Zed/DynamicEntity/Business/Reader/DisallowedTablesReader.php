@@ -16,9 +16,6 @@ class DisallowedTablesReader implements DisallowedTablesReaderInterface
      */
     protected $dynamicEntityConfig;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\DynamicEntityConfig $dynamicEntityConfig
-     */
     public function __construct(DynamicEntityConfig $dynamicEntityConfig)
     {
         $this->dynamicEntityConfig = $dynamicEntityConfig;

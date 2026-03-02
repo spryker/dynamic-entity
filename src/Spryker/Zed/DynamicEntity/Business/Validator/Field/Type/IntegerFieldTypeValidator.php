@@ -17,22 +17,11 @@ class IntegerFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
      */
     protected const INTEGER_FIELD_TYPE = 'integer';
 
-    /**
-     * @param mixed $fieldValue
-     *
-     * @return bool
-     */
     public function isValidType(mixed $fieldValue): bool
     {
         return is_int($fieldValue) === true;
     }
 
-    /**
-     * @param mixed $fieldValue
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValidValue(mixed $fieldValue, DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer): bool
     {
         if ($dynamicEntityFieldDefinitionTransfer->getValidation() === null) {
@@ -52,9 +41,6 @@ class IntegerFieldTypeValidator extends AbstractFieldTypeValidator implements Dy
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return static::INTEGER_FIELD_TYPE;

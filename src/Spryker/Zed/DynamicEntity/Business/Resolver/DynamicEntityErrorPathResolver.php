@@ -24,13 +24,6 @@ class DynamicEntityErrorPathResolver implements DynamicEntityErrorPathResolverIn
      */
     protected const CHAIN_DELIMITER = '.';
 
-    /**
-     * @param int $index
-     * @param string $tableAlias
-     * @param string|null $parentErrorPath
-     *
-     * @return string
-     */
     public function getErrorPath(int $index, string $tableAlias, ?string $parentErrorPath = null): string
     {
         $formattedIndex = $this->buildFormattedIndex($tableAlias, $index);
@@ -42,23 +35,11 @@ class DynamicEntityErrorPathResolver implements DynamicEntityErrorPathResolverIn
         return ltrim($this->buildChainElement($formattedIndex, $parentErrorPath), static::CHAIN_DELIMITER);
     }
 
-    /**
-     * @param string $tableAlias
-     * @param int $index
-     *
-     * @return string
-     */
     protected function buildFormattedIndex(string $tableAlias, int $index): string
     {
         return sprintf(static::FORMATTED_INDEX_PLACEHOLDER, $tableAlias, $index);
     }
 
-    /**
-     * @param string $formattedIndex
-     * @param string|null $parentErrorPath
-     *
-     * @return string
-     */
     protected function buildChainElement(string $formattedIndex, ?string $parentErrorPath = null): string
     {
         return sprintf(static::RELATION_CHAIN_PLACEHOLDER, $parentErrorPath, $formattedIndex);

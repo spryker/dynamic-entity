@@ -20,9 +20,6 @@ class DynamicEntityPostEditRequestExpander implements DynamicEntityPostEditReque
      */
     protected DynamicEntityIndexerInterface $dynamicEntityIndexer;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $dynamicEntityIndexer
-     */
     public function __construct(DynamicEntityIndexerInterface $dynamicEntityIndexer)
     {
         $this->dynamicEntityIndexer = $dynamicEntityIndexer;
@@ -119,12 +116,6 @@ class DynamicEntityPostEditRequestExpander implements DynamicEntityPostEditReque
         return $dynamicEntityPostEditRequestTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $relationName
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     protected function findChildDynamicEntityConfigurationByRelationName(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         string $relationName

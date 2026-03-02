@@ -14,18 +14,8 @@ use Spryker\Zed\DynamicEntity\Business\Configuration\DynamicEntityConfigurationR
 
 interface DynamicEntityReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
-     */
     public function getEntityCollection(DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer): DynamicEntityCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Spryker\Zed\DynamicEntity\Business\Configuration\DynamicEntityConfigurationResponseInterface
-     */
     public function getDynamicEntityConfigurationTransferTree(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): DynamicEntityConfigurationResponseInterface;

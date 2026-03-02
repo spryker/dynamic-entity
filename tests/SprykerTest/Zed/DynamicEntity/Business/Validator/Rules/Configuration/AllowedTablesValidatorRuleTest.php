@@ -32,9 +32,6 @@ class AllowedTablesValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateEmptyCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -49,9 +46,6 @@ class AllowedTablesValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -66,9 +60,6 @@ class AllowedTablesValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithErrors(): void
     {
         // Arrange

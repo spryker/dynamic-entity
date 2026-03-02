@@ -62,9 +62,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
      */
     protected DynamicEntityPostEditRequestExpanderInterface $dynamicEntityPostEditRequestExpander;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Expander\DynamicEntityPostEditRequestExpanderInterface $dynamicEntityPostEditRequestExpander
-     */
     public function __construct(DynamicEntityPostEditRequestExpanderInterface $dynamicEntityPostEditRequestExpander)
     {
         $this->dynamicEntityPostEditRequestExpander = $dynamicEntityPostEditRequestExpander;
@@ -128,13 +125,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $dynamicEntityDefinitionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
-     */
     public function mapChildDynamicEntityCollectionTransferToDynamicEntityCollectionTransfer(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer,
         DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer,
@@ -173,14 +163,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $dynamicEntityCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityRelationTransfer $dynamicEntityRelationTransfer
-     * @param int $dynamicEntityId
-     * @param string $childFieldName
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityRelationTransfer
-     */
     protected function mapChildDynamicEntityToDynamicEntityRelationTransfer(
         DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer,
         DynamicEntityRelationTransfer $dynamicEntityRelationTransfer,
@@ -270,11 +252,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $foreignKeyFieldMappingArray;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer
-     */
     public function mapDynamicEntityCollectionRequestTransferToDynamicEntityCriteriaTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): DynamicEntityCriteriaTransfer {
@@ -350,12 +327,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $dynamicEntityCollectionRequestTreeBranches;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConditionsTransfer|null
-     */
     public function mapDynamicEntityTransferToDynamicEntityConditionsTransfer(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
@@ -382,12 +353,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $dynamicEntityConditionsTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer
-     */
     public function mapDynamicEntityCollectionDeleteCriteriaTransferToDynamicEntityCriteriaTransfer(
         DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
@@ -395,11 +360,6 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         return $dynamicEntityCriteriaTransfer->fromArray($dynamicEntityCollectionDeleteCriteriaTransfer->toArray(true, true), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return string
-     */
     protected function getIdentifierVisibleName(DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): string
     {
         $identifier = $dynamicEntityConfigurationTransfer->getDynamicEntityDefinitionOrFail()->getIdentifierOrFail();

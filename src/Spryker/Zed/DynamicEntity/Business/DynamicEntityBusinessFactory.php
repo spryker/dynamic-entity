@@ -88,9 +88,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class DynamicEntityBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Reader\DynamicEntityReaderInterface
-     */
     public function createDynamicEntityReader(): DynamicEntityReaderInterface
     {
         return new DynamicEntityReader(
@@ -101,9 +98,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityCreatorInterface
-     */
     public function createDynamicEntityCreator(): DynamicEntityCreatorInterface
     {
         return new DynamicEntityCreator(
@@ -115,9 +109,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Updater\DynamicEntityUpdaterInterface
-     */
     public function createDynamicEntityUpdater(): DynamicEntityUpdaterInterface
     {
         return new DynamicEntityUpdater(
@@ -129,9 +120,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Writer\DynamicEntityWriterInterface
-     */
     public function createDynamicEntityCreateWriter(): DynamicEntityWriterInterface
     {
         return new DynamicEntityWriter(
@@ -144,9 +132,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Writer\DynamicEntityWriterInterface
-     */
     public function createDynamicEntityUpdateWriter(): DynamicEntityWriterInterface
     {
         return new DynamicEntityWriter(
@@ -159,9 +144,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityComprehensiveValidatorInterface
-     */
     public function createDynamicEntityComprehensiveCreateValidator(): DynamicEntityComprehensiveValidatorInterface
     {
         return new DynamicEntityComprehensiveValidator(
@@ -171,9 +153,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityComprehensiveValidatorInterface
-     */
     public function createDynamicEntityComprehensiveUpdateValidator(): DynamicEntityComprehensiveValidatorInterface
     {
         return new DynamicEntityComprehensiveValidator(
@@ -183,9 +162,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createDynamicEntityCreateValidator(): DynamicEntityValidatorInterface
     {
         return new DynamicEntityValidator(
@@ -193,9 +169,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createDynamicEntityUpdateValidator(): DynamicEntityValidatorInterface
     {
         return new DynamicEntityValidator(
@@ -203,9 +176,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Builder\DynamicEntityCollectionRequestBuilderInterface
-     */
     public function createDynamicEntityCollectionRequestBuilder(): DynamicEntityCollectionRequestBuilderInterface
     {
         return new DynamicEntityCollectionRequestBuilder(
@@ -249,9 +219,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createRequiredFieldValidator(): DynamicEntityValidatorInterface
     {
         return new RequiredFieldValidator(
@@ -260,9 +227,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createConstraintValidator(): DynamicEntityValidatorInterface
     {
         return new ConstraintValidator(
@@ -271,9 +235,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createRequestFieldValidator(): DynamicEntityValidatorInterface
     {
         return new RequestFieldValidator(
@@ -282,9 +243,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createEditableRelationValidator(): DynamicEntityValidatorInterface
     {
         return new EditableRelationValidator(
@@ -292,9 +250,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createIntegerFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new IntegerFieldTypeValidator(
@@ -303,9 +258,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createStringFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new StringFieldTypeValidator(
@@ -314,9 +266,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createBooleanFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new BooleanFieldTypeValidator(
@@ -325,9 +274,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createDecimalFeildTypeValidator(): DynamicEntityValidatorInterface
     {
         return new DecimalFieldTypeValidator(
@@ -352,9 +298,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(DynamicEntityDependencyProvider::PLUGINS_DYNAMIC_ENTITY_POST_UPDATE);
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Installer\DynamicEntityInstallerInterface
-     */
     public function createDynamicEntityInstaller(): DynamicEntityInstallerInterface
     {
         return new DynamicEntityInstaller(
@@ -367,9 +310,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Installer\Validator\FieldMappingValidatorInterface
-     */
     public function createFieldMappingValidator(): FieldMappingValidatorInterface
     {
         return new FieldMappingValidator(
@@ -377,17 +317,11 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Propel\Runtime\Map\DatabaseMap
-     */
     public function getPropelDatabaseMap(): DatabaseMap
     {
         return Propel::getDatabaseMap();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityConfigurationCreatorInterface
-     */
     public function createDynamicEntityConfigurationCreator(): DynamicEntityConfigurationCreatorInterface
     {
         return new DynamicEntityConfigurationCreator(
@@ -397,9 +331,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityConfiguration\DynamicEntityConfigurationColumnDetailProviderInterface
-     */
     public function createDynamicEntityConfigurationColumnDetailProvider(): DynamicEntityConfigurationColumnDetailProviderInterface
     {
         return new DynamicEntityConfigurationColumnDetailProvider(
@@ -407,9 +338,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Updater\DynamicEntityConfigurationUpdaterInterface
-     */
     public function createDynamicEntityConfigurationUpdater(): DynamicEntityConfigurationUpdaterInterface
     {
         return new DynamicEntityConfigurationUpdater(
@@ -418,9 +346,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationValidatorInterface
-     */
     public function createDynamicEntityConfigurationValidator(): DynamicEntityConfigurationValidatorInterface
     {
         return new DynamicEntityConfigurationValidator(
@@ -455,9 +380,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createAllowedTablesValidatorRule(): ValidatorRuleInterface
     {
         return new AllowedTablesValidatorRule(
@@ -466,17 +388,11 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createRequiredFieldsValidatorRule(): ValidatorRuleInterface
     {
         return new RequiredFieldsValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createUniqueTableNameAliasValidatorRule(): ValidatorRuleInterface
     {
         return new UniqueTableNameAliasValidatorRule(
@@ -484,9 +400,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface
-     */
     public function createDynamicEntityMapper(): DynamicEntityMapperInterface
     {
         return new DynamicEntityMapper(
@@ -494,57 +407,36 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createFieldTypeBooleanValidatorRule(): ValidatorRuleInterface
     {
         return new FieldTypeBooleanValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createFieldTypeDecimalValidatorRule(): ValidatorRuleInterface
     {
         return new FieldTypeDecimalValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createFieldTypeIntegerValidatorRule(): ValidatorRuleInterface
     {
         return new FieldTypeIntegerValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createFieldTypeStringValidatorRule(): ValidatorRuleInterface
     {
         return new FieldTypeStringValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Rules\ValidatorRuleInterface
-     */
     public function createResourceNameValidatorRule(): ValidatorRuleInterface
     {
         return new ResourceNameValidatorRule();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Dependency\External\DynamicEntityToConnectionInterface
-     */
     public function getConnection(): DynamicEntityToConnectionInterface
     {
         return $this->getProvidedDependency(DynamicEntityDependencyProvider::CONNECTION);
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Reader\DisallowedTablesReaderInterface
-     */
     public function createDisallowedTablesReader(): DisallowedTablesReaderInterface
     {
         return new DisallowedTablesReader(
@@ -552,17 +444,11 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Builder\DynamicEntityRelationConfigurationTreeBuilderInterface
-     */
     public function createDynamicEntityRelationConfigurationTreeBuilder(): DynamicEntityRelationConfigurationTreeBuilderInterface
     {
         return new DynamicEntityRelationConfigurationTreeBuilder();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationTreeValidatorInterface
-     */
     public function createDynamicEntityConfigurationTreeValidator(): DynamicEntityConfigurationTreeValidatorInterface
     {
         return new DynamicEntityConfigurationTreeValidator(
@@ -570,17 +456,11 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface
-     */
     public function createDynamicEntityIndexer(): DynamicEntityIndexerInterface
     {
         return new DynamicEntityIndexer();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Expander\DynamicEntityPostEditRequestExpanderInterface
-     */
     public function createPostEditRequestExpander(): DynamicEntityPostEditRequestExpanderInterface
     {
         return new DynamicEntityPostEditRequestExpander(
@@ -588,17 +468,11 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface
-     */
     public function createDynamicEntityErrorPathResolver(): DynamicEntityErrorPathResolverInterface
     {
         return new DynamicEntityErrorPathResolver();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Deleter\DynamicEntityDeleterInterface
-     */
     public function createDynamicEntityDeleter(): DynamicEntityDeleterInterface
     {
         return new DynamicEntityDeleter(
@@ -608,9 +482,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createCreationFieldImmutableValidator(): DynamicEntityValidatorInterface
     {
         return new CreationFieldImmutabilityValidator(
@@ -619,9 +490,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     public function createUpdateFieldImmutableValidator(): DynamicEntityValidatorInterface
     {
         return new UpdateFieldImmutabilityValidator(
@@ -630,25 +498,16 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Filter\DynamicEntityFilterInterface
-     */
     public function createDynamicEntityFieldCreationFilter(): DynamicEntityFilterInterface
     {
         return new DynamicEntityFieldCreationFilter();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Filter\DynamicEntityFilterInterface
-     */
     public function createDynamicEntityFieldUpdateFilter(): DynamicEntityFilterInterface
     {
         return new DynamicEntityFieldUpdateFilter();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Transaction\Propel\TransactionProcessorInterface
-     */
     public function createTransactionProcessor(): TransactionProcessorInterface
     {
         return new TransactionProcessor(
@@ -656,9 +515,6 @@ class DynamicEntityBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\Field\Completeness\Constraint\ConstraintInterface
-     */
     public function createUrlConstraint(): ConstraintInterface
     {
         return new UrlConstraint();

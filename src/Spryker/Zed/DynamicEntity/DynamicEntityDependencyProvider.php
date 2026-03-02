@@ -38,11 +38,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -54,11 +49,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -68,11 +58,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConnection(Container $container): Container
     {
         $container->set(static::CONNECTION, function () {
@@ -82,11 +67,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addDynamicEntityPostCreatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_DYNAMIC_ENTITY_POST_CREATE, function () {
@@ -104,11 +84,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addDynamicEntityPostUpdatePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_DYNAMIC_ENTITY_POST_UPDATE, function () {
@@ -126,11 +101,6 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {

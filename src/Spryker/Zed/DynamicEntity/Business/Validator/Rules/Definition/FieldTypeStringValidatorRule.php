@@ -65,12 +65,6 @@ class FieldTypeStringValidatorRule extends AbstractFildTypeValidatorRule impleme
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateFieldType(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer
@@ -106,9 +100,6 @@ class FieldTypeStringValidatorRule extends AbstractFildTypeValidatorRule impleme
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getFieldType(): string
     {
         return static::FIELD_TYPE_STRING;

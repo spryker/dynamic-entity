@@ -32,11 +32,6 @@ class DynamicEntityComprehensiveValidator implements DynamicEntityComprehensiveV
      */
     protected DynamicEntityConfigurationTreeValidatorInterface $dynamicEntityConfigurationTreeValidator;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationTreeValidatorInterface $dynamicEntityConfigurationTreeValidator
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface $dynamicEntityValidator
-     */
     public function __construct(
         DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator,
         DynamicEntityConfigurationTreeValidatorInterface $dynamicEntityConfigurationTreeValidator,
@@ -69,23 +64,12 @@ class DynamicEntityComprehensiveValidator implements DynamicEntityComprehensiveV
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function validateDynamicEntityConfiguration(
         DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer {
         return $this->dynamicEntityConfigurationValidator->validate($dynamicEntityConfigurationCollectionResponseTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
@@ -96,12 +80,6 @@ class DynamicEntityComprehensiveValidator implements DynamicEntityComprehensiveV
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityCollectionRequestByDynamicEntityConfigurationCollection(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer

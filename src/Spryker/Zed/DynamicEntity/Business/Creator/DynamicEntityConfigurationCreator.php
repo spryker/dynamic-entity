@@ -20,11 +20,6 @@ class DynamicEntityConfigurationCreator implements DynamicEntityConfigurationCre
 {
     use TransactionTrait;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityEntityManagerInterface $dynamicEntityManager
-     * @param \Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityConfiguration\DynamicEntityConfigurationColumnDetailProviderInterface $dynamicEntityConfigurationColumnDetailProvider
-     */
     public function __construct(
         protected DynamicEntityConfigurationValidatorInterface $dynamicEntityConfigurationValidator,
         protected DynamicEntityEntityManagerInterface $dynamicEntityManager,
@@ -32,11 +27,6 @@ class DynamicEntityConfigurationCreator implements DynamicEntityConfigurationCre
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function createDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer {
@@ -97,11 +87,6 @@ class DynamicEntityConfigurationCreator implements DynamicEntityConfigurationCre
         return $persistedDynamicEntityConfigurationTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredFields(DynamicEntityConfigurationCollectionRequestTransfer $dynamicEntityConfigurationCollectionRequestTransfer): void
     {
         $dynamicEntityConfigurationCollectionRequestTransfer->requireDynamicEntityConfigurations();

@@ -11,20 +11,8 @@ use Propel\Runtime\ActiveQuery\ModelCriteria;
 
 interface FilterStrategyInterface
 {
-    /**
-     * @param string|null $fieldValue
-     *
-     * @return bool
-     */
     public function isApplicable(?string $fieldValue): bool;
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     * @param string $fieldConditionName
-     * @param string|null $fieldValue
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     public function applyConditionToQuery(
         ModelCriteria $query,
         string $fieldConditionName,

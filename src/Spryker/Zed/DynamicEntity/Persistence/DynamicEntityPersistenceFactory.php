@@ -38,25 +38,16 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery
-     */
     public function createDynamicEntityConfigurationQuery(): SpyDynamicEntityConfigurationQuery
     {
         return SpyDynamicEntityConfigurationQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Propel\Mapper\DynamicEntityMapper
-     */
     public function createDynamicEntityMapper(): DynamicEntityMapper
     {
         return new DynamicEntityMapper($this->getServiceUtilEncoding());
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Builder\DynamicEntityQueryBuilderInterface
-     */
     public function createDynamicEntityQueryBuilder(): DynamicEntityQueryBuilderInterface
     {
         return new DynamicEntityQueryBuilder(
@@ -65,17 +56,11 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
         );
     }
 
-    /**
-     * @return \Propel\Runtime\Map\DatabaseMap
-     */
     public function getPropelDatabaseMap(): DatabaseMap
     {
         return Propel::getDatabaseMap();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\ExceptionToErrorMapperInterface
-     */
     public function createExceptionToErrorMapper(): ExceptionToErrorMapperInterface
     {
         return new ExceptionToErrorMapper(
@@ -100,73 +85,46 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createDuplicateEntryExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new DuplicateEntryExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createDuplicateKeyExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new DuplicateKeyExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createNotNullableExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new NotNullableExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createNotNullViolationExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new NotNullViolationExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createMySqlDeleteParentRowExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new MySqlDeleteParentRowExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Mapper\DatabaseExceptionToErrorMapperInterface
-     */
     public function createPostgreSqlDeleteParentRowExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new PostgreSqlDeleteParentRowExceptionToErrorMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Resetter\DynamicEntityResetterInterface
-     */
     public function createDynamicEntityResetter(): DynamicEntityResetterInterface
     {
         return new DynamicEntityResetter();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Filter\Strategy\FilterStrategyInterface
-     */
     public function createDefaultFilterStrategy(): FilterStrategyInterface
     {
         return new DefaultFilterStrategy();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Persistence\Filter\Strategy\FilterStrategyInterface
-     */
     public function createInFilterStrategy(): FilterStrategyInterface
     {
         return new InFilterStrategy($this->getServiceUtilEncoding());
@@ -183,9 +141,6 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Dependency\Service\DynamicEntityToUtilEncodingServiceInterface
-     */
     public function getServiceUtilEncoding(): DynamicEntityToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(DynamicEntityDependencyProvider::SERVICE_UTIL_ENCODING);

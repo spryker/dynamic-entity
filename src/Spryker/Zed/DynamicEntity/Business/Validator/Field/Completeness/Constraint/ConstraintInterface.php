@@ -12,26 +12,12 @@ use Generated\Shared\Transfer\DynamicEntityTransfer;
 
 interface ConstraintInterface
 {
-    /**
-     * @param string $constraintName
-     *
-     * @return bool
-     */
     public function isApplicable(string $constraintName): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $fieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValid(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityFieldDefinitionTransfer $fieldDefinitionTransfer
     ): bool;
 
-    /**
-     * @return string
-     */
     public function getErrorMessage(): string;
 }

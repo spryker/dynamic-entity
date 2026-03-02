@@ -54,11 +54,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         $this->filterStrategies = $filterStrategies;
     }
 
-    /**
-     * @param string $tableName
-     *
-     * @return string|null
-     */
     public function getEntityClassName(string $tableName): ?string
     {
         return $this->databaseMap->getTable($tableName)->getClassName();
@@ -84,11 +79,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         return $entityClassName;
     }
 
-    /**
-     * @param string $tableName
-     *
-     * @return string
-     */
     public function getEntityQueryClass(string $tableName): string
     {
         return sprintf(static::QUERY_CLASS_PLACEHOLDER, $this->getEntityClassName($tableName));
@@ -147,11 +137,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         return $query;
     }
 
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
     protected function convertSnakeCaseToCamelCase(string $input): string
     {
         return str_replace('_', '', ucwords($input, '_'));
@@ -173,13 +158,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         return $definedFieldVisibleNames;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConditionsTransfer|null $dynamicEntityConditionsTransfer
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function filterByFieldConditions(
         ModelCriteria $query,
         DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer,
@@ -208,13 +186,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         return $query;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     * @param string $fieldConditionName
-     * @param string|null $fieldConditionValue
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function applyConditionToQuery(
         ModelCriteria $query,
         string $fieldConditionName,
@@ -229,12 +200,6 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         return $query;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     * @param string $fieldConditionName
-     *
-     * @return string
-     */
     protected function getVisibleIdentifier(
         DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer,
         string $fieldConditionName

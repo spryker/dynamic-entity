@@ -30,9 +30,6 @@ use Spryker\Zed\DynamicEntity\Business\Validator\Field\Type\IntegerFieldTypeVali
  */
 class IntegerFieldTypeValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testWillReturnValidatorType(): void
     {
         // Arrange
@@ -42,9 +39,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertSame('integer', $validator->getType());
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnTrue(): void
     {
         // Arrange
@@ -56,9 +50,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidType(-123));
     }
 
-    /**
-     * @return void
-     */
     public function testValidTypeWillReturnFalse(): void
     {
         // Arrange
@@ -71,9 +62,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertFalse($validator->isValidType('123.123'));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWithoutValidationRulesWillReturnTrue(): void
     {
         // Arrange
@@ -91,9 +79,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidValue(true, $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWithValidationRulesWillReturnTrue(): void
     {
         // Arrange
@@ -110,9 +95,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertTrue($validator->isValidValue('0', $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return void
-     */
     public function testValidValueWithValidationRulesWillReturnFalse(): void
     {
         // Arrange
@@ -128,9 +110,6 @@ class IntegerFieldTypeValidatorTest extends Unit
         $this->assertFalse($validator->isValidValue('100', $dynamicEntityFieldDefinitionTransfer));
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Validator\DynamicEntityValidatorInterface
-     */
     protected function createIntegerFieldTypeValidator(): DynamicEntityValidatorInterface
     {
         return new IntegerFieldTypeValidator(
@@ -139,17 +118,11 @@ class IntegerFieldTypeValidatorTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface
-     */
     protected function createDynamicEntityIndexerMock(): DynamicEntityIndexerInterface
     {
         return $this->getMockBuilder(DynamicEntityIndexerInterface::class)->getMock();
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface
-     */
     protected function createDynamicEntityErrorPathResolverMock(): DynamicEntityErrorPathResolverInterface
     {
         return $this->getMockBuilder(DynamicEntityErrorPathResolverInterface::class)->getMock();

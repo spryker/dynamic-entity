@@ -14,8 +14,5 @@ interface FildTypeValidatorRuleInterface
      */
     public function getAllowedValidationFields(): array;
 
-    /**
-     * @return string
-     */
     public function getFieldType(): string;
 }

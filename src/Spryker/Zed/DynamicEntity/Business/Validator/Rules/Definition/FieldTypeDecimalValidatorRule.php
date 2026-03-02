@@ -50,12 +50,6 @@ class FieldTypeDecimalValidatorRule extends AbstractFildTypeValidatorRule implem
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateFieldType(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer
@@ -91,9 +85,6 @@ class FieldTypeDecimalValidatorRule extends AbstractFildTypeValidatorRule implem
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getFieldType(): string
     {
         return static::FIELD_TYPE_DECIMAL;

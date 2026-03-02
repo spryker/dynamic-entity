@@ -43,11 +43,6 @@ class DeleteParentRowExceptionToErrorMapper implements DatabaseExceptionToErrorM
      */
     protected const REFERENCE_TABLE_REGEX = '/referenced from table "([^"]+)"/';
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return bool
-     */
     public function isApplicable(Exception $exception): bool
     {
         $previousException = $exception->getPrevious();
@@ -61,9 +56,6 @@ class DeleteParentRowExceptionToErrorMapper implements DatabaseExceptionToErrorM
         return $code === static::ERROR_CODE_INTEGRITY_CONSTRAINT && $errorMatches === true;
     }
 
-    /**
-     * @return string
-     */
     public function getErrorGlossaryKey(): string
     {
         return static::GLOSSARY_KEY_ERROR_DELETE_FOREIGN_KEY_CONSTRAINT_FAILS;
@@ -82,11 +74,6 @@ class DeleteParentRowExceptionToErrorMapper implements DatabaseExceptionToErrorM
         ];
     }
 
-    /**
-     * @param \Exception $exception
-     *
-     * @return string|null
-     */
     public function mapExceptionToErrorMessage(Exception $exception): ?string
     {
         return null;

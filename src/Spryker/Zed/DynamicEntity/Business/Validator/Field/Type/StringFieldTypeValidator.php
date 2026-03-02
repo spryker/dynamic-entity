@@ -17,22 +17,11 @@ class StringFieldTypeValidator extends AbstractFieldTypeValidator implements Dyn
      */
     protected const STRING_FIELD_TYPE = 'string';
 
-    /**
-     * @param mixed $fieldValue
-     *
-     * @return bool
-     */
     public function isValidType(mixed $fieldValue): bool
     {
         return is_string($fieldValue) === true;
     }
 
-    /**
-     * @param mixed $fieldValue
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return bool
-     */
     public function isValidValue(mixed $fieldValue, DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer): bool
     {
         if ($dynamicEntityFieldDefinitionTransfer->getValidation() === null) {
@@ -52,9 +41,6 @@ class StringFieldTypeValidator extends AbstractFieldTypeValidator implements Dyn
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return static::STRING_FIELD_TYPE;

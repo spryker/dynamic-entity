@@ -94,13 +94,6 @@ class DynamicEntityBusinessTester extends Actor
         'productAbstractProducts.productLocalizedAttributes.thisIsTest',
     ];
 
-    /**
-     * @param string|null $tableName
-     * @param string|null $tableAlias
-     * @param int|null $id
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function createDynamicEntityConfigurationTransfer(
         ?string $tableName = null,
         ?string $tableAlias = null,
@@ -187,13 +180,6 @@ class DynamicEntityBusinessTester extends Actor
         return $dynamicEntityConfigurationTransfer;
     }
 
-    /**
-     * @param string|null $tableName
-     * @param string|null $tableAlias
-     * @param int|null $id
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer
-     */
     public function createDynamicEntityConfigurationCollectionRequestTransfer(
         ?string $tableName = null,
         ?string $tableAlias = null,
@@ -208,11 +194,6 @@ class DynamicEntityBusinessTester extends Actor
         return $dynamicEntityConfigurationCollectionRequestTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionRequestTransfer
-     */
     public function createDynamicEntityConfigurationCollectionRequestTransferByDynamicEntityFieldDefinitionTransfer(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
     ): DynamicEntityConfigurationCollectionRequestTransfer {
@@ -233,11 +214,6 @@ class DynamicEntityBusinessTester extends Actor
         return $dynamicEntityConfigurationCollectionRequestTransfer;
     }
 
-    /**
-     * @param int $idDynamicEntityConfiguration
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration|null
-     */
     public function findDynamicEntityConfigurationById(int $idDynamicEntityConfiguration): ?SpyDynamicEntityConfiguration
     {
         return $this->createSpyDynamicEntityConfigurationQuery()
@@ -245,11 +221,6 @@ class DynamicEntityBusinessTester extends Actor
             ->findOne();
     }
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration|null
-     */
     public function findDynamicEntityConfiguration(string $tableAlias): ?SpyDynamicEntityConfiguration
     {
         return $this->createSpyDynamicEntityConfigurationQuery()
@@ -257,12 +228,6 @@ class DynamicEntityBusinessTester extends Actor
             ->findOne();
     }
 
-    /**
-     * @param string $tableName
-     * @param string $tableAlias
-     *
-     * @return int
-     */
     public function createEntity(string $tableName, string $tableAlias): int
     {
         $spyDynamicEntityConfiguration = (new SpyDynamicEntityConfiguration())
@@ -344,9 +309,6 @@ class DynamicEntityBusinessTester extends Actor
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getExpectedDefinition(): string
     {
         return <<<'EOT'
@@ -354,9 +316,6 @@ class DynamicEntityBusinessTester extends Actor
 EOT;
     }
 
-    /**
-     * @return string
-     */
     public function getDefinitionForDynamicEntityConfigurationRelation(): string
     {
         return <<<DEFINITION
@@ -418,9 +377,6 @@ EOT;
 DEFINITION;
     }
 
-    /**
-     * @return string
-     */
     public function getDefinitionForDynamicEntityConfigurationRelationFieldMapping(): string
     {
         return <<<DEFINITION
@@ -472,9 +428,6 @@ DEFINITION;
 DEFINITION;
     }
 
-    /**
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function createConfigRelationEntity(): SpyDynamicEntityConfiguration
     {
         $spyDynamicEntityConfigurationEntity = new SpyDynamicEntityConfiguration();
@@ -502,15 +455,6 @@ DEFINITION;
         return $spyDynamicEntityConfigurationEntity;
     }
 
-    /**
-     * @param string $name
-     * @param string $parentFieldName
-     * @param int $parentFieldId
-     * @param string $childFieldName
-     * @param int $childFieldId
-     *
-     * @return void
-     */
     public function createRelationWithFieldMapping(
         string $name,
         string $parentFieldName,
@@ -532,13 +476,6 @@ DEFINITION;
             ->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param string $fieldName
-     * @param string $value
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityTransfer|null
-     */
     public function getDynamicEntityFromCollectionByFieldNameAndValue(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer,
         string $fieldName,
@@ -554,14 +491,6 @@ DEFINITION;
         return null;
     }
 
-    /**
-     * @param string $parentTableAlias
-     * @param string $relationName
-     * @param string $parentConfigurationIdField
-     * @param string $childConfigurationIdField
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function createDynamicEntityConfigurationWithRelationAndFieldMapping(
         string $parentTableAlias,
         string $relationName,
@@ -582,11 +511,6 @@ DEFINITION;
         return $dynamicEntityConfigurationEntity;
     }
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer
-     */
     public function createDynamicEntityCollectionRequestTransfer(string $tableAlias): DynamicEntityCollectionRequestTransfer
     {
         $dynamicEntityCollectionRequestTransfer = new DynamicEntityCollectionRequestTransfer();
@@ -596,12 +520,6 @@ DEFINITION;
         return $dynamicEntityCollectionRequestTransfer;
     }
 
-    /**
-     * @param string $tableAlias
-     * @param string|null $filterCondition
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer
-     */
     public function haveDynamicEntityCriteriaTransfer(
         string $tableAlias,
         ?string $filterCondition = null
@@ -621,21 +539,11 @@ DEFINITION;
             ->setDynamicEntityConditions($dynamicEntityConditionTransfer);
     }
 
-    /**
-     * @return \Spryker\Zed\DynamicEntity\Business\DynamicEntityFacadeInterface
-     */
     public function createDynamicEntityFacade(): DynamicEntityFacadeInterface
     {
         return new DynamicEntityFacade();
     }
 
-    /**
-     * @param string $tableName
-     * @param string $tableAlias
-     * @param string $definition
-     *
-     * @return void
-     */
     public function createDynamicEntityConfigurationEntity(string $tableName, string $tableAlias, string $definition): void
     {
         (new SpyDynamicEntityConfiguration())
@@ -647,11 +555,6 @@ DEFINITION;
             ->save();
     }
 
-    /**
-     * @param string $relationName
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelation
-     */
     public function getDynamicEntityConfigurationRelationEntityByRelation(string $relationName): SpyDynamicEntityConfigurationRelation
     {
         return SpyDynamicEntityConfigurationRelationQuery::create()
@@ -660,11 +563,6 @@ DEFINITION;
             ->getData()[0];
     }
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function getDynamicEntityConfigurationByTableAlias(string $tableAlias): SpyDynamicEntityConfiguration
     {
         return SpyDynamicEntityConfigurationQuery::create()
@@ -673,11 +571,6 @@ DEFINITION;
             ->getData()[0];
     }
 
-    /**
-     * @param string $tableName
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function getDynamicEntityConfigurationByTableName(string $tableName): SpyDynamicEntityConfiguration
     {
         return SpyDynamicEntityConfigurationQuery::create()
@@ -686,11 +579,6 @@ DEFINITION;
             ->getData()[0];
     }
 
-    /**
-     * @param int $idDynamicEntityConfiguration
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfiguration
-     */
     public function getDynamicEntityConfigurationByIdDynamicEntityConfiguration(int $idDynamicEntityConfiguration): SpyDynamicEntityConfiguration
     {
         return SpyDynamicEntityConfigurationQuery::create()
@@ -699,11 +587,6 @@ DEFINITION;
             ->getData()[0];
     }
 
-    /**
-     * @param int $idDynamicEntityConfigurationRelation
-     *
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelation
-     */
     public function getDynamicEntityConfigurationRelationByIdDynamicEntityConfigurationRelation(
         int $idDynamicEntityConfigurationRelation
     ): SpyDynamicEntityConfigurationRelation {
@@ -713,9 +596,6 @@ DEFINITION;
             ->getData()[0];
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer
-     */
     public function createDynamicEntityCollectionRequestTransferWithComplexData(): DynamicEntityCollectionRequestTransfer
     {
         $dynamicEntityCollectionRequestTransfer = $this
@@ -728,9 +608,6 @@ DEFINITION;
         return $dynamicEntityCollectionRequestTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityTransfer
-     */
     protected function createDynamicEntityTransferWithComplexTestFields(): DynamicEntityTransfer
     {
         return (new DynamicEntityTransfer())
@@ -763,9 +640,6 @@ DEFINITION;
             ]);
     }
 
-    /**
-     * @return \Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery
-     */
     protected function createSpyDynamicEntityConfigurationQuery(): SpyDynamicEntityConfigurationQuery
     {
         return new SpyDynamicEntityConfigurationQuery();

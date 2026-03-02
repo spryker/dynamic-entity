@@ -38,9 +38,6 @@ class FieldTypeBooleanValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateEmptyCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -54,9 +51,6 @@ class FieldTypeBooleanValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -70,9 +64,6 @@ class FieldTypeBooleanValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWithOneFieldWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -96,9 +87,6 @@ class FieldTypeBooleanValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWithOneFieldWillReturnWithErrors(): void
     {
         // Arrange

@@ -65,11 +65,6 @@ class DynamicEntityDeleter implements DynamicEntityDeleterInterface
      */
     protected DynamicEntityReaderInterface $dynamicEntityReader;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $dynamicEntityMapper
-     * @param \Spryker\Zed\DynamicEntity\Business\Reader\DynamicEntityReaderInterface $dynamicEntityReader
-     */
     public function __construct(
         DynamicEntityEntityManagerInterface $entityManager,
         DynamicEntityMapperInterface $dynamicEntityMapper,
@@ -80,11 +75,6 @@ class DynamicEntityDeleter implements DynamicEntityDeleterInterface
         $this->dynamicEntityReader = $dynamicEntityReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function deleteEntityCollection(
         DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
     ): DynamicEntityCollectionResponseTransfer {
@@ -143,11 +133,6 @@ class DynamicEntityDeleter implements DynamicEntityDeleterInterface
             ->addError($errorTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     protected function createDynamicEntityCollectionResponseTransfer(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
     ): DynamicEntityCollectionResponseTransfer {
@@ -159,11 +144,6 @@ class DynamicEntityDeleter implements DynamicEntityDeleterInterface
         return $dynamicEntityCollectionResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     protected function getDynamicEntityConfigurationTransfer(DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer): DynamicEntityConfigurationTransfer
     {
         $tableAlias = $dynamicEntityCriteriaTransfer->getDynamicEntityConditionsOrFail()->getTableAliasOrFail();
@@ -172,11 +152,6 @@ class DynamicEntityDeleter implements DynamicEntityDeleterInterface
         return $dynamicEntityConfigurationResponse->getDynamicEntityConfigurationTransfer();
     }
 
-    /**
-     * @param string $tableAlias
-     *
-     * @return string
-     */
     protected function buildErrorPath(string $tableAlias): string
     {
         return sprintf(static::ERROR_PATH_PLACEHOLDER, $tableAlias, static::ERROR_PATH_INDEX);

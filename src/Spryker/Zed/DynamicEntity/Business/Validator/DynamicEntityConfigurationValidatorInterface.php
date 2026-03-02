@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransf
 
 interface DynamicEntityConfigurationValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionResponseTransfer
-     */
     public function validate(
         DynamicEntityConfigurationCollectionResponseTransfer $dynamicEntityConfigurationCollectionResponseTransfer
     ): DynamicEntityConfigurationCollectionResponseTransfer;

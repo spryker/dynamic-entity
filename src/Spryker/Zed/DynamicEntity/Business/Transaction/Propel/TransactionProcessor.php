@@ -18,19 +18,11 @@ class TransactionProcessor implements TransactionProcessorInterface
      */
     protected DynamicEntityToConnectionInterface $propelConnection;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Dependency\External\DynamicEntityToConnectionInterface $propelConnection
-     */
     public function __construct(DynamicEntityToConnectionInterface $propelConnection)
     {
         $this->propelConnection = $propelConnection;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return bool
-     */
     public function startPerItemTransaction(DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer): bool
     {
         if ($dynamicEntityCollectionRequestTransfer->getIsTransactional() !== false) {
@@ -40,12 +32,6 @@ class TransactionProcessor implements TransactionProcessorInterface
         return $this->propelConnection->beginTransaction();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return bool
-     */
     public function endPerItemTransaction(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
@@ -61,11 +47,6 @@ class TransactionProcessor implements TransactionProcessorInterface
         return $this->propelConnection->commit();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return bool
-     */
     public function startAtomicTransaction(DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer): bool
     {
         if ($dynamicEntityCollectionRequestTransfer->getIsTransactional() === false) {
@@ -75,12 +56,6 @@ class TransactionProcessor implements TransactionProcessorInterface
         return $this->propelConnection->beginTransaction();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return bool
-     */
     public function endAtomicTransaction(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer

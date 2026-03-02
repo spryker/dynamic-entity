@@ -34,10 +34,6 @@ abstract class AbstractFieldImmutabilityValidator
      */
     protected DynamicEntityIndexerInterface $dynamicEntityIndexer;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $dynamicEntityIndexer
-     */
     public function __construct(
         DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver,
         DynamicEntityIndexerInterface $dynamicEntityIndexer
@@ -193,12 +189,6 @@ abstract class AbstractFieldImmutabilityValidator
         return $errorTransfers;
     }
 
-    /**
-     * @param string $identifier
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return string
-     */
     protected function getIdentifierVisibleName(string $identifier, DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): string
     {
         foreach ($dynamicEntityConfigurationTransfer->getDynamicEntityDefinitionOrFail()->getFieldDefinitions() as $fieldDefinitionTransfer) {

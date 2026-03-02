@@ -9,13 +9,6 @@ namespace Spryker\Zed\DynamicEntity\Business\Resolver;
 
 interface DynamicEntityErrorPathResolverInterface
 {
-    /**
-     * @param int $index
-     * @param string $tableAlias
-     * @param string|null $parentErrorPath
-     *
-     * @return string
-     */
     public function getErrorPath(
         int $index,
         string $tableAlias,

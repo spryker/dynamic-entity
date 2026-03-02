@@ -30,9 +30,6 @@ class ResourceNameValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateWillReturnCollectionWithError(): void
     {
         // Arrange

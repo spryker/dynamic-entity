@@ -13,13 +13,6 @@ use Generated\Shared\Transfer\ErrorTransfer;
 
 interface ExceptionToErrorMapperInterface
 {
-    /**
-     * @param \Exception $exception
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param string $errorPath
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function map(
         Exception $exception,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,

@@ -14,14 +14,6 @@ use Generated\Shared\Transfer\DynamicEntityTransfer;
 
 interface DynamicEntityWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function createDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
@@ -29,14 +21,6 @@ interface DynamicEntityWriterInterface
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
     ): DynamicEntityCollectionResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer
-     */
     public function updateDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,

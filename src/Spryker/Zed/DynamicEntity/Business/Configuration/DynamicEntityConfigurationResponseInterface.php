@@ -12,9 +12,6 @@ use Generated\Shared\Transfer\ErrorTransfer;
 
 interface DynamicEntityConfigurationResponseInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     public function getDynamicEntityConfigurationTransfer(): DynamicEntityConfigurationTransfer;
 
     /**

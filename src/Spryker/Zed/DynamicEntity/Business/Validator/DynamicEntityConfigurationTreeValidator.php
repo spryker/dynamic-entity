@@ -57,20 +57,11 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
      */
     protected DynamicEntityMapperInterface $dynamicEntityMapper;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Mapper\DynamicEntityMapperInterface $dynamicEntityMapper
-     */
     public function __construct(DynamicEntityMapperInterface $dynamicEntityMapper)
     {
         $this->dynamicEntityMapper = $dynamicEntityMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityConfigurationCollection(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
@@ -115,12 +106,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     public function validateDynamicEntityCollectionRequestByDynamicEntityConfigurationCollection(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
@@ -133,13 +118,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     protected function validateRelationChainsSequence(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer,
@@ -200,12 +178,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
-     * @param string $relationName
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     protected function getDynamicEntityConfigurationByChildRelationName(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer,
         string $relationName
@@ -236,12 +208,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
         return $relationChains;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollection
-     * @param string $tableAlias
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     protected function getDynamicEntityConfigurationEntityByTableAlias(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollection,
         string $tableAlias
@@ -270,12 +236,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
             ->setParameters($parameters);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorTransfer|null
-     */
     protected function validateFilterField(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTranfer
@@ -322,12 +282,6 @@ class DynamicEntityConfigurationTreeValidator implements DynamicEntityConfigurat
         return $definedFieldVisibleNames;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     * @param string $fieldConditionName
-     *
-     * @return string
-     */
     protected function getVisibleIdentifier(
         DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer,
         string $fieldConditionName

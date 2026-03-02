@@ -38,9 +38,6 @@ class FieldTypeStringValidatorRuleTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testValidateEmptyCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -54,9 +51,6 @@ class FieldTypeStringValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -70,9 +64,6 @@ class FieldTypeStringValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWithOneFieldWillReturnWithoutErrors(): void
     {
         // Arrange
@@ -99,9 +90,6 @@ class FieldTypeStringValidatorRuleTest extends Unit
         $this->assertCount(0, $errorCollectionTransfer->getErrors());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWithOneFieldWillReturnWithIsRequiredError(): void
     {
         // Arrange
@@ -129,9 +117,6 @@ class FieldTypeStringValidatorRuleTest extends Unit
         $this->assertSame(static::FOO_FIELD_NAME, $errorCollectionTransfer->getErrors()[0]->getEntityIdentifier());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateCollectionWithOneFieldWillReturnWithCompareError(): void
     {
         // Arrange

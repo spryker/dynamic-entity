@@ -34,10 +34,6 @@ class RequiredFieldValidator implements DynamicEntityValidatorInterface
      */
     protected DynamicEntityIndexerInterface $dynamicEntityIndexer;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Business\Resolver\DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver
-     * @param \Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexerInterface $dynamicEntityIndexer
-     */
     public function __construct(
         DynamicEntityErrorPathResolverInterface $dynamicEntityErrorPathResolver,
         DynamicEntityIndexerInterface $dynamicEntityIndexer

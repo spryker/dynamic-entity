@@ -12,37 +12,15 @@ use Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer;
 
 interface TransactionProcessorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return bool
-     */
     public function startPerItemTransaction(DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return bool
-     */
     public function endPerItemTransaction(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
     ): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return bool
-     */
     public function startAtomicTransaction(DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer
-     *
-     * @return bool
-     */
     public function endAtomicTransaction(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer,
         DynamicEntityCollectionResponseTransfer $dynamicEntityCollectionResponseTransfer

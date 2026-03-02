@@ -30,13 +30,6 @@ interface DynamicEntityMapperInterface
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationRelationTransfer $dynamicEntityConfigurationRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCollectionTransfer
-     */
     public function mapChildDynamicEntityCollectionTransferToDynamicEntityCollectionTransfer(
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer,
         DynamicEntityCollectionTransfer $childDynamicEntityCollectionTransfer,
@@ -65,11 +58,6 @@ interface DynamicEntityMapperInterface
         DynamicEntityCollectionTransfer $dynamicEntityCollectionTransfer
     ): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer
-     */
     public function mapDynamicEntityCollectionRequestTransferToDynamicEntityCriteriaTransfer(
         DynamicEntityCollectionRequestTransfer $dynamicEntityCollectionRequestTransfer
     ): DynamicEntityCriteriaTransfer;
@@ -100,23 +88,11 @@ interface DynamicEntityMapperInterface
         array $dynamicEntityCollectionRequestTreeBranches = []
     ): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConditionsTransfer|null
-     */
     public function mapDynamicEntityTransferToDynamicEntityConditionsTransfer(
         DynamicEntityTransfer $dynamicEntityTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): ?DynamicEntityConditionsTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer
-     */
     public function mapDynamicEntityCollectionDeleteCriteriaTransferToDynamicEntityCriteriaTransfer(
         DynamicEntityCollectionDeleteCriteriaTransfer $dynamicEntityCollectionDeleteCriteriaTransfer,
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer

@@ -34,9 +34,6 @@ abstract class AbstractFildTypeValidatorRule implements FildTypeValidatorRuleInt
      */
     abstract public function getAllowedValidationFields(): array;
 
-    /**
-     * @return string
-     */
     abstract public function getFieldType(): string;
 
     /**

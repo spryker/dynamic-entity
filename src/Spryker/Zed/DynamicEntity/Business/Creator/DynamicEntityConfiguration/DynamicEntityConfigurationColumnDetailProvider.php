@@ -42,18 +42,10 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
      */
     protected const FIELD_DEFINITION_TYPE_BOOLEAN = 'boolean';
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\DynamicEntityConfig $dynamicEntityConfig
-     */
     public function __construct(protected DynamicEntityConfig $dynamicEntityConfig)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
-     */
     public function provideColumDetails(
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
     ): DynamicEntityConfigurationCollectionTransfer {
@@ -64,11 +56,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return $dynamicEntityConfigurationCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer
-     */
     protected function provideColumDetailsForConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer {
@@ -196,12 +183,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return null;
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer|null $existingDynamicEntityFieldDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer
-     */
     protected function getDynamicEntityFieldDefinitionTransfer(
         SimpleXMLElement $columnXmlElement,
         ?DynamicEntityFieldDefinitionTransfer $existingDynamicEntityFieldDefinitionTransfer
@@ -239,11 +220,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return $dynamicEntityFieldDefinitionTransfer;
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     *
-     * @return string
-     */
     protected function mapPropelTypesToFieldType(SimpleXMLElement $columnXmlElement): string
     {
         return match ((string)$columnXmlElement['type']) {
@@ -254,12 +230,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         };
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer
-     */
     protected function addColumnDescriptionToFieldDefinition(
         SimpleXMLElement $columnXmlElement,
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
@@ -285,12 +255,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return $dynamicEntityFieldDefinitionTransfer;
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer
-     */
     protected function addEnumToFieldDefinition(
         SimpleXMLElement $columnXmlElement,
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
@@ -302,12 +266,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return $dynamicEntityFieldDefinitionTransfer;
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer
-     */
     protected function addExamplesToFieldDefinition(
         SimpleXMLElement $columnXmlElement,
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
@@ -321,12 +279,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return $dynamicEntityFieldDefinitionTransfer->setExamples($examples);
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     * @param string $columnType
-     *
-     * @return string|null
-     */
     protected function getColumnDescriptionByType(SimpleXMLElement $columnXmlElement, string $columnType): ?string
     {
         return match ($columnType) {
@@ -337,11 +289,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         };
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     *
-     * @return string
-     */
     protected function getFirstEnumValue(SimpleXMLElement $columnXmlElement): string
     {
         $valueSet = explode(', ', $this->getValueSetData($columnXmlElement));
@@ -349,21 +296,11 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return current($valueSet);
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     *
-     * @return string
-     */
     protected function getValueSetData(SimpleXMLElement $columnXmlElement): string
     {
         return (string)$columnXmlElement['valueSet'];
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     *
-     * @return bool
-     */
     protected function getIsColumnRequired(SimpleXMLElement $columnXmlElement): bool
     {
         if (isset($columnXmlElement['required']) && (string)$columnXmlElement['autoIncrement'] !== 'true') {
@@ -373,11 +310,6 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
         return false;
     }
 
-    /**
-     * @param \SimpleXMLElement $columnXmlElement
-     *
-     * @return int|null
-     */
     protected function getMaxLength(SimpleXMLElement $columnXmlElement): ?int
     {
         if (isset($columnXmlElement['size'])) {

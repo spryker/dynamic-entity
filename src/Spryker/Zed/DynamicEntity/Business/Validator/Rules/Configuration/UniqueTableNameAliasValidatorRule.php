@@ -47,9 +47,6 @@ class UniqueTableNameAliasValidatorRule implements ValidatorRuleInterface
      */
     protected DynamicEntityRepositoryInterface $repository;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Persistence\DynamicEntityRepositoryInterface $repository
-     */
     public function __construct(DynamicEntityRepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -100,12 +97,6 @@ class UniqueTableNameAliasValidatorRule implements ValidatorRuleInterface
         return $dynamicEntityConfigurationTransfers->getArrayCopy()[0]->getIdDynamicEntityConfiguration() === null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $existingDynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function buildErrorCollectionTransfer(
         ErrorCollectionTransfer $errorCollectionTransfer,
         DynamicEntityConfigurationCollectionTransfer $existingDynamicEntityConfigurationCollectionTransfer
@@ -141,13 +132,6 @@ class UniqueTableNameAliasValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $existingDynamicEntityConfigurationCollectionTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateExistingDynamicEntityConfigurations(
         DynamicEntityConfigurationCollectionTransfer $existingDynamicEntityConfigurationCollectionTransfer,
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,

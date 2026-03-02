@@ -78,12 +78,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validatedRequireFields(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer,
         ErrorCollectionTransfer $errorCollectionTransfer
@@ -124,13 +118,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param string $entityIdentifier
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateTypeField(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         string $entityIdentifier,
@@ -148,13 +135,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param string $entityIdentifier
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateFieldNameField(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         string $entityIdentifier,
@@ -172,13 +152,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param string $entityIdentifier
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateFieldVisibleNameField(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         string $entityIdentifier,
@@ -196,13 +169,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param string $entityIdentifier
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateRequireIsCreatableField(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         string $entityIdentifier,
@@ -220,13 +186,6 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer
-     * @param string $entityIdentifier
-     * @param \Generated\Shared\Transfer\ErrorCollectionTransfer $errorCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ErrorCollectionTransfer
-     */
     protected function validateRequireIsEditableField(
         DynamicEntityFieldDefinitionTransfer $dynamicEntityFieldDefinitionTransfer,
         string $entityIdentifier,
@@ -244,21 +203,11 @@ class RequiredFieldsValidatorRule implements ValidatorRuleInterface
         return $errorCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
-     *
-     * @return bool
-     */
     protected function hasIdDynamicEntityConfiguration(DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): bool
     {
         return $dynamicEntityConfigurationTransfer->getIdDynamicEntityConfiguration() !== null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
-     *
-     * @return bool
-     */
     protected function isIdentifierPresentInDefinition(DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer): bool
     {
         $dynamicEntityFieldDefinitionTransfers = $dynamicEntityDefinitionTransfer->getFieldDefinitions();

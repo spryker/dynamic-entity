@@ -18,19 +18,11 @@ class InFilterStrategy implements FilterStrategyInterface
      */
     protected DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding;
 
-    /**
-     * @param \Spryker\Zed\DynamicEntity\Dependency\Service\DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding
-     */
     public function __construct(DynamicEntityToUtilEncodingServiceInterface $serviceUtilEncoding)
     {
         $this->serviceUtilEncoding = $serviceUtilEncoding;
     }
 
-    /**
-     * @param string|null $fieldValue
-     *
-     * @return bool
-     */
     public function isApplicable(?string $fieldValue): bool
     {
         if ($fieldValue === null) {
@@ -47,13 +39,6 @@ class InFilterStrategy implements FilterStrategyInterface
             );
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     * @param string $fieldConditionName
-     * @param string|null $fieldValue
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     public function applyConditionToQuery(
         ModelCriteria $query,
         string $fieldConditionName,

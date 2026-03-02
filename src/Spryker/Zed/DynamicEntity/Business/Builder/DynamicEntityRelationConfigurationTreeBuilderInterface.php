@@ -13,12 +13,6 @@ use Generated\Shared\Transfer\DynamicEntityCriteriaTransfer;
 
 interface DynamicEntityRelationConfigurationTreeBuilderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer
-     * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer|null
-     */
     public function buildDynamicEntityConfigurationTransferTree(
         DynamicEntityCriteriaTransfer $dynamicEntityCriteriaTransfer,
         DynamicEntityConfigurationCollectionTransfer $dynamicEntityConfigurationCollectionTransfer
