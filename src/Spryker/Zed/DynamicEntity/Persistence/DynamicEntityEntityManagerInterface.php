@@ -57,7 +57,7 @@ interface DynamicEntityEntityManagerInterface
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $childDynamicEntityConfigurationCollectionTransfer
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $parentDynamicEntityConfigurationTransfer
-     * @param array<string, array<string, mixed>> $indexedChildRelations
+     * @param array<string, list<array<string, mixed>>> $indexedChildRelations
      *
      * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
      */

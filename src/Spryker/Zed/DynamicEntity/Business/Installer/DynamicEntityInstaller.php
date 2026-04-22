@@ -162,14 +162,14 @@ class DynamicEntityInstaller implements DynamicEntityInstallerInterface
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
      *
-     * @return array<string, mixed>
+     * @return array<string, list<array<string, mixed>>>
      */
     protected function getChildRelationsIndexedByTableAlias(DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer): array
     {
         $childRelationsIndexedByTableName = [];
 
         foreach ($dynamicEntityConfigurationTransfer->getChildRelations() as $childRelationTransfer) {
-            $childRelationsIndexedByTableName[$childRelationTransfer->getChildDynamicEntityConfigurationOrFail()->getTableAliasOrFail()] = $childRelationTransfer->toArray();
+            $childRelationsIndexedByTableName[$childRelationTransfer->getChildDynamicEntityConfigurationOrFail()->getTableAliasOrFail()][] = $childRelationTransfer->toArray();
         }
 
         return $childRelationsIndexedByTableName;

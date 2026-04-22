@@ -29,6 +29,7 @@ use Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelationField
 use Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationRelationQuery;
 use Spryker\Zed\DynamicEntity\Business\DynamicEntityFacade;
 use Spryker\Zed\DynamicEntity\Business\DynamicEntityFacadeInterface;
+use Spryker\Zed\DynamicEntity\Business\Indexer\DynamicEntityIndexer;
 
 /**
  * Inherited Methods
@@ -93,6 +94,11 @@ class DynamicEntityBusinessTester extends Actor
         'productAbstractProducts.productStocks',
         'productAbstractProducts.productLocalizedAttributes.thisIsTest',
     ];
+
+    public function _before(): void
+    {
+        DynamicEntityIndexer::resetCache();
+    }
 
     public function createDynamicEntityConfigurationTransfer(
         ?string $tableName = null,

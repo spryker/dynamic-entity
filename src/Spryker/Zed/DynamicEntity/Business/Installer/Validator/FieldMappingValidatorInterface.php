@@ -15,7 +15,7 @@ interface FieldMappingValidatorInterface
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $childDynamicEntityConfigurationCollectionTransfer
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $parentDynamicEntityConfigurationTransfer
-     * @param array<string, array<string, mixed>> $indexedChildRelations
+     * @param array<string, list<array<string, mixed>>> $indexedChildRelations
      *
      * @return void
      */

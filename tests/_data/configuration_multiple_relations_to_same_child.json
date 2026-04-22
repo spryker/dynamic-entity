@@ -1,0 +1,82 @@
+[
+    {
+        "tableName": "spy_test_two_relations",
+        "tableAlias": "test-two-relations",
+        "isActive": true,
+        "definition": {
+            "identifier": "id_test_two_relations",
+            "fields": [
+                {
+                    "fieldName": "id_test_two_relations",
+                    "fieldVisibleName": "id_test_two_relations",
+                    "isCreatable": false,
+                    "isEditable": false,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
+                },
+                {
+                    "fieldName": "fk_child_first",
+                    "fieldVisibleName": "fk_child_first",
+                    "isCreatable": true,
+                    "isEditable": true,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
+                },
+                {
+                    "fieldName": "fk_child_second",
+                    "fieldVisibleName": "fk_child_second",
+                    "isCreatable": true,
+                    "isEditable": true,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
+                }
+            ]
+        },
+        "childRelations": [
+            {
+                "name": "firstRelation",
+                "isEditable": false,
+                "childDynamicEntityConfiguration": {
+                    "tableAlias": "test-child-shared"
+                },
+                "relationFieldMappings": [
+                    {
+                        "childFieldName": "id_test_child_shared",
+                        "parentFieldName": "fk_child_first"
+                    }
+                ]
+            },
+            {
+                "name": "secondRelation",
+                "isEditable": false,
+                "childDynamicEntityConfiguration": {
+                    "tableAlias": "test-child-shared"
+                },
+                "relationFieldMappings": [
+                    {
+                        "childFieldName": "id_test_child_shared",
+                        "parentFieldName": "fk_child_second"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "tableName": "spy_test_child_shared",
+        "tableAlias": "test-child-shared",
+        "isActive": true,
+        "definition": {
+            "identifier": "id_test_child_shared",
+            "fields": [
+                {
+                    "fieldName": "id_test_child_shared",
+                    "fieldVisibleName": "id_test_child_shared",
+                    "isCreatable": false,
+                    "isEditable": false,
+                    "type": "integer",
+                    "validation": { "isRequired": false }
+                }
+            ]
+        }
+    }
+]

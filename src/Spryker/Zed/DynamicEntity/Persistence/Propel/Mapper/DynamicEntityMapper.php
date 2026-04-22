@@ -181,10 +181,14 @@ class DynamicEntityMapper
 
     public function mapDynamicEntityTransferToDynamicEntity(
         DynamicEntityTransfer $dynamicEntityTransfer,
-        ActiveRecordInterface $activeRecord
+        ActiveRecordInterface $activeRecord,
+        DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer
     ): ?ActiveRecordInterface {
-        foreach ($dynamicEntityTransfer->getFields() as $fieldName => $fieldValue) {
-            $setFieldMethod = $this->getSetFieldMethod($fieldName);
+        $visibleNameToFieldName = $this->indexFieldNamesByVisibleName($dynamicEntityDefinitionTransfer);
+
+        foreach ($dynamicEntityTransfer->getFields() as $fieldVisibleName => $fieldValue) {
+            $actualFieldName = $visibleNameToFieldName[$fieldVisibleName] ?? $fieldVisibleName;
+            $setFieldMethod = $this->getSetFieldMethod($actualFieldName);
             $activeRecord->$setFieldMethod($fieldValue);
         }
 
@@ -303,6 +307,20 @@ class DynamicEntityMapper
 
         foreach ($dynamicEntityDefinitionTransfer->getFieldDefinitions() as $fieldDefinition) {
             $result[$fieldDefinition->getFieldNameOrFail()] = $fieldDefinition;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    protected function indexFieldNamesByVisibleName(DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer): array
+    {
+        $result = [];
+
+        foreach ($dynamicEntityDefinitionTransfer->getFieldDefinitions() as $fieldDefinition) {
+            $result[$fieldDefinition->getFieldVisibleNameOrFail()] = $fieldDefinition->getFieldNameOrFail();
         }
 
         return $result;

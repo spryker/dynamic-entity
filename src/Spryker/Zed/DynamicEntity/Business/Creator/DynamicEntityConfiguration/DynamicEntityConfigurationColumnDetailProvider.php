@@ -199,7 +199,7 @@ class DynamicEntityConfigurationColumnDetailProvider implements DynamicEntityCon
             ->setIsEnabled(true);
 
         if ($existingDynamicEntityFieldDefinitionTransfer) {
-            $dynamicEntityFieldDefinitionTransfer->fromArray($existingDynamicEntityFieldDefinitionTransfer->toArray(), true);
+            $dynamicEntityFieldDefinitionTransfer->fromArray($existingDynamicEntityFieldDefinitionTransfer->modifiedToArray(), true);
         }
 
         $dynamicEntityFieldValidationTransfer = new DynamicEntityFieldValidationTransfer();

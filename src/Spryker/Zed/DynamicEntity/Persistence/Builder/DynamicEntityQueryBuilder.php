@@ -180,7 +180,9 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
                 continue;
             }
 
-            $query = $this->applyConditionToQuery($query, $this->convertSnakeCaseToCamelCase($fieldConditionName), $fieldCondition->getValue());
+            // fieldConditionName is the visible name (API alias); Propel needs the actual column name
+            $actualFieldName = $this->resolveFieldNameByVisibleName($dynamicEntityDefinitionTransfer, $fieldConditionName);
+            $query = $this->applyConditionToQuery($query, $this->convertSnakeCaseToCamelCase($actualFieldName), $fieldCondition->getValue());
         }
 
         return $query;
@@ -198,6 +200,19 @@ class DynamicEntityQueryBuilder implements DynamicEntityQueryBuilderInterface
         }
 
         return $query;
+    }
+
+    protected function resolveFieldNameByVisibleName(
+        DynamicEntityDefinitionTransfer $dynamicEntityDefinitionTransfer,
+        string $fieldVisibleName
+    ): string {
+        foreach ($dynamicEntityDefinitionTransfer->getFieldDefinitions() as $fieldDefinition) {
+            if ($fieldDefinition->getFieldVisibleNameOrFail() === $fieldVisibleName) {
+                return $fieldDefinition->getFieldNameOrFail();
+            }
+        }
+
+        return $fieldVisibleName;
     }
 
     protected function getVisibleIdentifier(

@@ -33,6 +33,14 @@ class DynamicEntityIndexer implements DynamicEntityIndexerInterface
      */
     protected static $cachedChildRelationsIndexedByTableAlias = [];
 
+    public static function resetCache(): void
+    {
+        static::$cachedDefinitionsIndexedByFieldVisibleName = [];
+        static::$cachedChildRelationsIndexedByRelationName = [];
+        static::$cachedConfigurationsIndexedByTableAlias = [];
+        static::$cachedChildRelationsIndexedByTableAlias = [];
+    }
+
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityTransfer $dynamicEntityTransfer
      * @param array<string, string> $indexedFieldDefinitions

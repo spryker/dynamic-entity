@@ -55,6 +55,11 @@ class DynamicEntityFacadeTest extends Unit
     /**
      * @var string
      */
+    protected const ERROR_ENTITY_NOT_FOUND_OR_IDENTIFIER_IS_NOT_CREATABLE = 'dynamic_entity.validation.entity_not_found_or_identifier_is_not_creatable';
+
+    /**
+     * @var string
+     */
     protected const FIELD_PARENT_ENTITY_ID_CONFIGURATION = 'id_dynamic_entity_configuration';
 
     /**
@@ -116,6 +121,16 @@ class DynamicEntityFacadeTest extends Unit
      * @var string
      */
     protected const IDENTIFIER_TEST_DIFFERENT_VISIBLE_NAME_DEFINITION = '{"identifier":"id_dynamic_entity_configuration","fields":[{"fieldName":"id_dynamic_entity_configuration","fieldVisibleName":"idDynamicEntityConfiguration","isEditable":true,"isCreatable":false,"type":"integer","validation":{"isRequired":false}},{"fieldName":"table_alias","fieldVisibleName":"table_alias","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}},{"fieldName":"table_name","fieldVisibleName":"table_name","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}},{"fieldName":"is_active","fieldVisibleName":"is_active","isEditable":false,"isCreatable":true,"type":"boolean","validation":{"isRequired":false}},{"fieldName":"definition","fieldVisibleName":"definition","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}}]}';
+
+    /**
+     * @var string
+     */
+    protected const DIFFERENT_FIELD_VISIBLE_NAME_TABLE_ALIAS = 'test_field_visible_name';
+
+    /**
+     * @var string
+     */
+    protected const DEFINITION_WITH_DIFFERENT_FIELD_VISIBLE_NAME = '{"identifier":"id_dynamic_entity_configuration","fields":[{"fieldName":"id_dynamic_entity_configuration","fieldVisibleName":"idDynamicEntityConfiguration","isEditable":true,"isCreatable":false,"type":"integer","validation":{"isRequired":false}},{"fieldName":"table_alias","fieldVisibleName":"table_alias","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}},{"fieldName":"table_name","fieldVisibleName":"tableName","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}},{"fieldName":"is_active","fieldVisibleName":"is_active","isEditable":false,"isCreatable":true,"type":"boolean","validation":{"isRequired":false}},{"fieldName":"definition","fieldVisibleName":"definition","type":"string","isEditable":true,"isCreatable":true,"validation":{"isRequired":false}}]}';
 
     /**
      * @var \Spryker\Zed\DynamicEntity\Business\DynamicEntityFacadeInterface
@@ -653,6 +668,38 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
     }
 
+    public function testPutDynamicEntityCollectionReturnsErrorWhenNonExistentIdentifierWithNonDefaultVisibleName(): void
+    {
+        // Arrange
+        $this->tester->createDynamicEntityConfigurationEntity(
+            $this->tester::TABLE_NAME,
+            static::IDENTIFIER_TEST_TABLE_ALIAS,
+            static::IDENTIFIER_TEST_DIFFERENT_VISIBLE_NAME_DEFINITION,
+        );
+
+        $dynamicEntityCollectionRequestTransfer = $this->tester->createDynamicEntityCollectionRequestTransfer(static::IDENTIFIER_TEST_TABLE_ALIAS);
+        $dynamicEntityCollectionRequestTransfer
+            ->setIsCreatable(true)
+            ->setResetNotProvidedFieldValues(true)
+            ->addDynamicEntity(
+                (new DynamicEntityTransfer())
+                    ->setFields([
+                        'idDynamicEntityConfiguration' => 999999,
+                        'table_name' => 'new_table',
+                    ]),
+            );
+
+        // Act
+        $dynamicEntityCollectionResponseTransfer = $this->dynamicEntityFacade->updateDynamicEntityCollection($dynamicEntityCollectionRequestTransfer);
+
+        // Assert
+        $this->assertNotEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
+        $this->assertSame(
+            static::ERROR_ENTITY_NOT_FOUND_OR_IDENTIFIER_IS_NOT_CREATABLE,
+            $dynamicEntityCollectionResponseTransfer->getErrors()[0]->getMessage(),
+        );
+    }
+
     public function testUpdateDynamicEntityCollectionReturnsErrorIfInvalidDataTypeIsPassed(): void
     {
         //Arrange
@@ -843,6 +890,29 @@ class DynamicEntityFacadeTest extends Unit
         ];
     }
 
+    public function testInstallPersistsBothRelationsWhenMultipleRelationsPointToSameChildTable(): void
+    {
+        // Arrange
+        $this->createBusinessFactoryMock('configuration_multiple_relations_to_same_child.json');
+
+        // Act
+        $this->dynamicEntityFacade->install();
+
+        // Assert
+        $this->assertCount(
+            1,
+            SpyDynamicEntityConfigurationRelationQuery::create()
+                ->filterByName('firstRelation')
+                ->find(),
+        );
+        $this->assertCount(
+            1,
+            SpyDynamicEntityConfigurationRelationQuery::create()
+                ->filterByName('secondRelation')
+                ->find(),
+        );
+    }
+
     public function testCreateDynamicEntityCollectionCreatesTheRecordAndReturnsValidReponseTransfer(): void
     {
         //Arrange
@@ -932,6 +1002,39 @@ class DynamicEntityFacadeTest extends Unit
         $this->assertNotEquals($dynamicConfigurationEntity->getTableName(), $updatedDynamicConfigurationEntity->getTableName());
         $this->assertEquals('newid', $updatedDynamicConfigurationEntity->getTableName());
         $this->assertEquals($updatedDynamicConfigurationEntity->getTableName(), $dynamicEntityCollectionResponseTransfer->getDynamicEntities()[0]->getFields()['table_name']);
+    }
+
+    public function testUpdateDynamicEntityCollectionUpdatesRecordWhenFieldHasDifferentVisibleName(): void
+    {
+        // Arrange
+        $this->tester->createDynamicEntityConfigurationEntity(
+            $this->tester::TABLE_NAME,
+            static::DIFFERENT_FIELD_VISIBLE_NAME_TABLE_ALIAS,
+            static::DEFINITION_WITH_DIFFERENT_FIELD_VISIBLE_NAME,
+        );
+        $dynamicConfigurationEntity = $this->tester->getDynamicEntityConfigurationByTableAlias(static::DIFFERENT_FIELD_VISIBLE_NAME_TABLE_ALIAS);
+
+        $dynamicEntityCollectionRequestTransfer = $this->tester->createDynamicEntityCollectionRequestTransfer(static::DIFFERENT_FIELD_VISIBLE_NAME_TABLE_ALIAS);
+        $dynamicEntityCollectionRequestTransfer->addDynamicEntity(
+            (new DynamicEntityTransfer())
+                ->setFields([
+                    'idDynamicEntityConfiguration' => $dynamicConfigurationEntity->getIdDynamicEntityConfiguration(),
+                    'tableName' => 'updated_table_name',
+                ]),
+        );
+
+        // Act
+        $dynamicEntityCollectionResponseTransfer = $this->dynamicEntityFacade->updateDynamicEntityCollection($dynamicEntityCollectionRequestTransfer);
+
+        // Assert
+        $updatedDynamicConfigurationEntity = $this->tester->getDynamicEntityConfigurationByIdDynamicEntityConfiguration(
+            $dynamicConfigurationEntity->getIdDynamicEntityConfiguration(),
+        );
+
+        $this->assertEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
+        $this->assertNotEquals($dynamicConfigurationEntity->getTableName(), $updatedDynamicConfigurationEntity->getTableName());
+        $this->assertSame('updated_table_name', $updatedDynamicConfigurationEntity->getTableName());
+        $this->assertSame('updated_table_name', $dynamicEntityCollectionResponseTransfer->getDynamicEntities()[0]->getFields()['tableName']);
     }
 
     public function testCreateDynamicEntityConfigurationCollectionWillReturnCollectionWithoutErrors(): void

@@ -41,7 +41,7 @@ class FieldMappingValidator implements FieldMappingValidatorInterface
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $childDynamicEntityConfigurationCollectionTransfer
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $parentDynamicEntityConfigurationTransfer
-     * @param array<string, array<string, mixed>> $indexedChildRelations
+     * @param array<string, list<array<string, mixed>>> $indexedChildRelations
      *
      * @return void
      */
@@ -51,14 +51,16 @@ class FieldMappingValidator implements FieldMappingValidatorInterface
         array $indexedChildRelations
     ): void {
         foreach ($childDynamicEntityConfigurationCollectionTransfer->getDynamicEntityConfigurations() as $childDynamicEntityConfigurationTransfer) {
-            $this->validateTableFields(
-                $indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()][static::KEY_RELATION_FIELD_MAPPINGS][0][static::KEY_CHILD_FIELD_NAME],
-                $childDynamicEntityConfigurationTransfer->getTableNameOrFail(),
-            );
-            $this->validateTableFields(
-                $indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()][static::KEY_RELATION_FIELD_MAPPINGS][0][static::KEY_PARENT_FIELD_NAME],
-                $parentDynamicEntityConfigurationTransfer->getTableNameOrFail(),
-            );
+            foreach ($indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()] as $childRelation) {
+                $this->validateTableFields(
+                    $childRelation[static::KEY_RELATION_FIELD_MAPPINGS][0][static::KEY_CHILD_FIELD_NAME],
+                    $childDynamicEntityConfigurationTransfer->getTableNameOrFail(),
+                );
+                $this->validateTableFields(
+                    $childRelation[static::KEY_RELATION_FIELD_MAPPINGS][0][static::KEY_PARENT_FIELD_NAME],
+                    $parentDynamicEntityConfigurationTransfer->getTableNameOrFail(),
+                );
+            }
         }
     }
 

@@ -278,7 +278,7 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
     /**
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer $childDynamicEntityConfigurationCollectionTransfer
      * @param \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer $parentDynamicEntityConfigurationTransfer
-     * @param array<string, array<string, mixed>> $indexedChildRelations
+     * @param array<string, list<array<string, mixed>>> $indexedChildRelations
      *
      * @return \Generated\Shared\Transfer\DynamicEntityConfigurationCollectionTransfer
      */
@@ -288,16 +288,18 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         array $indexedChildRelations
     ): DynamicEntityConfigurationCollectionTransfer {
         foreach ($childDynamicEntityConfigurationCollectionTransfer->getDynamicEntityConfigurations() as $childDynamicEntityConfigurationTransfer) {
-            $dynamicEntityConfigurationRelationEntity = (new SpyDynamicEntityConfigurationRelation())
-                ->fromArray($indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()])
-                ->setFkParentDynamicEntityConfiguration($parentDynamicEntityConfigurationTransfer->getIdDynamicEntityConfigurationOrFail())
-                ->setFkChildDynamicEntityConfiguration($childDynamicEntityConfigurationTransfer->getIdDynamicEntityConfigurationOrFail());
-            $dynamicEntityConfigurationRelationEntity->save();
+            foreach ($indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()] as $childRelation) {
+                $dynamicEntityConfigurationRelationEntity = (new SpyDynamicEntityConfigurationRelation())
+                    ->fromArray($childRelation)
+                    ->setFkParentDynamicEntityConfiguration($parentDynamicEntityConfigurationTransfer->getIdDynamicEntityConfigurationOrFail())
+                    ->setFkChildDynamicEntityConfiguration($childDynamicEntityConfigurationTransfer->getIdDynamicEntityConfigurationOrFail());
+                $dynamicEntityConfigurationRelationEntity->save();
 
-            (new SpyDynamicEntityConfigurationRelationFieldMapping())
-                ->fromArray($indexedChildRelations[$childDynamicEntityConfigurationTransfer->getTableAliasOrFail()][static::KEY_RELATION_FIELD_MAPPINGS][0])
-                ->setFkDynamicEntityConfigurationRelation($dynamicEntityConfigurationRelationEntity->getIdDynamicEntityConfigurationRelation())
-                ->save();
+                (new SpyDynamicEntityConfigurationRelationFieldMapping())
+                    ->fromArray($childRelation[static::KEY_RELATION_FIELD_MAPPINGS][0])
+                    ->setFkDynamicEntityConfigurationRelation($dynamicEntityConfigurationRelationEntity->getIdDynamicEntityConfigurationRelation())
+                    ->save();
+            }
         }
 
         return $childDynamicEntityConfigurationCollectionTransfer;
@@ -364,9 +366,11 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
             return true;
         }
 
-        $isIdentifierCreatable = array_shift($identifierFieldDefinition)->getIsCreatable();
+        $identifierFieldDefinitionTransfer = array_shift($identifierFieldDefinition);
+        $isIdentifierCreatable = $identifierFieldDefinitionTransfer->getIsCreatable();
+        $identifierVisibleName = $identifierFieldDefinitionTransfer->getFieldVisibleNameOrFail();
 
-        if ($this->findFieldConditionValueByName($dynamicEntityConditionsTransfer, $identifier) && $isIdentifierCreatable === false) {
+        if ($this->findFieldConditionValueByName($dynamicEntityConditionsTransfer, $identifierVisibleName) && $isIdentifierCreatable === false) {
             return false;
         }
 
@@ -385,6 +389,7 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
             $activeRecord = $this->getFactory()->createDynamicEntityMapper()->mapDynamicEntityTransferToDynamicEntity(
                 $dynamicEntityTransfer,
                 $activeRecord,
+                $dynamicEntityConfigurationTransfer->getDynamicEntityDefinitionOrFail(),
             );
 
             $activeRecord->save();
