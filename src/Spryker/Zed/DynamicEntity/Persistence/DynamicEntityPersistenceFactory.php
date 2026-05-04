@@ -22,6 +22,7 @@ use Spryker\Zed\DynamicEntity\Persistence\Mapper\ExceptionToErrorMapper;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\ExceptionToErrorMapperInterface;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\MySql\DeleteParentRowExceptionToErrorMapper as MySqlDeleteParentRowExceptionToErrorMapper;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\MySql\DuplicateEntryExceptionToErrorMapper;
+use Spryker\Zed\DynamicEntity\Persistence\Mapper\MySql\NoDefaultValueExceptionToErrorMapper;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\MySql\NotNullableExceptionToErrorMapper;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\PostgreSql\DeleteParentRowExceptionToErrorMapper as PostgreSqlDeleteParentRowExceptionToErrorMapper;
 use Spryker\Zed\DynamicEntity\Persistence\Mapper\PostgreSql\DuplicateKeyExceptionToErrorMapper;
@@ -77,6 +78,7 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
             //MySQL
             $this->createDuplicateEntryExceptionToErrorMapper(),
             $this->createNotNullableExceptionToErrorMapper(),
+            $this->createNoDefaultValueExceptionToErrorMapper(),
             $this->createMySqlDeleteParentRowExceptionToErrorMapper(),
             //PostgreSQL
             $this->createDuplicateKeyExceptionToErrorMapper(),
@@ -98,6 +100,11 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
     public function createNotNullableExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
     {
         return new NotNullableExceptionToErrorMapper();
+    }
+
+    public function createNoDefaultValueExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface
+    {
+        return new NoDefaultValueExceptionToErrorMapper();
     }
 
     public function createNotNullViolationExceptionToErrorMapper(): DatabaseExceptionToErrorMapperInterface

@@ -328,7 +328,7 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
             } catch (Exception $exception) {
                 $getterMethodName = static::PREFIX_GETTER_METHOD . ucfirst($identifier);
 
-                return $this->handleDeleteException(
+                $dynamicEntityCollectionResponseTransfer = $this->handleDeleteException(
                     $dynamicEntityCollectionResponseTransfer,
                     $dynamicEntityConfigurationTransfer,
                     $this->generateIdentifierInfo($dynamicEntityConfigurationTransfer, $object->{$getterMethodName}()),

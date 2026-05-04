@@ -1164,6 +1164,42 @@ class DynamicEntityFacadeTest extends Unit
         return $configMock;
     }
 
+    public function testPutDynamicEntityCollectionReturnsErrorInsteadOfExceptionWhenChildEntityHasEmptyFields(): void
+    {
+        // Arrange
+        $dynamicEntityConfigurationEntity = $this->tester->createDynamicEntityConfigurationWithRelationAndFieldMapping(
+            $this->tester::FOO_TABLE_ALIAS_1,
+            static::RELATION_TEST_NAME,
+            static::FIELD_PARENT_ENTITY_ID_CONFIGURATION,
+            static::FIELD_CHILD_ENTITY_ID_CONFIGURATION,
+        );
+        $dynamicConfigurationEntity = $this->tester->getDynamicEntityConfigurationByTableAlias($this->tester::FOO_TABLE_ALIAS_1);
+
+        $dynamicEntityCollectionRequestTransfer = $this->tester->createDynamicEntityCollectionRequestTransfer($dynamicEntityConfigurationEntity->getTableAlias());
+        $dynamicEntityCollectionRequestTransfer
+            ->setIsCreatable(true)
+            ->setResetNotProvidedFieldValues(true)
+            ->addDynamicEntity(
+                (new DynamicEntityTransfer())
+                    ->setFields([
+                        'id_dynamic_entity_configuration' => $dynamicConfigurationEntity->getIdDynamicEntityConfiguration(),
+                        'table_name' => static::FOO_TABLE_NAME,
+                        static::RELATION_TEST_NAME => [[]],
+                    ])
+                    ->addChildRelation(
+                        (new DynamicEntityRelationTransfer())
+                            ->setName(static::RELATION_TEST_NAME)
+                            ->addDynamicEntity(new DynamicEntityTransfer()),
+                    ),
+            );
+
+        // Act
+        $dynamicEntityCollectionResponseTransfer = $this->dynamicEntityFacade->updateDynamicEntityCollection($dynamicEntityCollectionRequestTransfer);
+
+        // Assert
+        $this->assertNotEmpty($dynamicEntityCollectionResponseTransfer->getErrors());
+    }
+
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\DynamicEntity\Business\Creator\DynamicEntityConfiguration\DynamicEntityConfigurationColumnDetailProvider
      */
