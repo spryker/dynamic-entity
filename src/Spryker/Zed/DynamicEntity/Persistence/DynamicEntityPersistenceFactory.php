@@ -10,6 +10,7 @@ namespace Spryker\Zed\DynamicEntity\Persistence;
 use Orm\Zed\DynamicEntity\Persistence\SpyDynamicEntityConfigurationQuery;
 use Propel\Runtime\Map\DatabaseMap;
 use Propel\Runtime\Propel;
+use Spryker\Zed\DynamicEntity\Dependency\External\DynamicEntityToConnectionInterface;
 use Spryker\Zed\DynamicEntity\Dependency\Service\DynamicEntityToUtilEncodingServiceInterface;
 use Spryker\Zed\DynamicEntity\DynamicEntityDependencyProvider;
 use Spryker\Zed\DynamicEntity\Persistence\Builder\DynamicEntityQueryBuilder;
@@ -146,6 +147,11 @@ class DynamicEntityPersistenceFactory extends AbstractPersistenceFactory
             $this->createInFilterStrategy(),
             $this->createDefaultFilterStrategy(),
         ];
+    }
+
+    public function getConnection(): DynamicEntityToConnectionInterface
+    {
+        return $this->getProvidedDependency(DynamicEntityDependencyProvider::CONNECTION);
     }
 
     public function getServiceUtilEncoding(): DynamicEntityToUtilEncodingServiceInterface

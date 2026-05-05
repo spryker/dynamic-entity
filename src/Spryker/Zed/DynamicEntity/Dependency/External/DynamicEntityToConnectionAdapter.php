@@ -35,4 +35,14 @@ class DynamicEntityToConnectionAdapter implements DynamicEntityToConnectionInter
     {
         return $this->propelConnection->beginTransaction();
     }
+
+    public function inTransaction(): bool
+    {
+        return $this->propelConnection->inTransaction();
+    }
+
+    public function exec(string $statement): int|false
+    {
+        return $this->propelConnection->exec($statement);
+    }
 }

@@ -14,4 +14,8 @@ interface DynamicEntityToConnectionInterface
     public function commit(): bool;
 
     public function beginTransaction(): bool;
+
+    public function inTransaction(): bool;
+
+    public function exec(string $statement): int|false;
 }

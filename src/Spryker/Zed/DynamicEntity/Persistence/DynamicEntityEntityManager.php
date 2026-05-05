@@ -72,6 +72,11 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
      */
     protected const PREFIX_GETTER_METHOD = 'get';
 
+    /**
+     * @var string
+     */
+    protected const SAVEPOINT_NAME_DELETE = 'delete_dynamic_entity_sp';
+
     public function createDynamicEntityConfiguration(
         DynamicEntityConfigurationTransfer $dynamicEntityConfigurationTransfer
     ): DynamicEntityConfigurationTransfer {
@@ -321,12 +326,22 @@ class DynamicEntityEntityManager extends AbstractEntityManager implements Dynami
         $dynamicEntityQuery = new $dynamicEntityQueryClassName();
         $identifier = $this->convertSnakeCaseToCamelCase($dynamicEntityConfigurationTransfer->getDynamicEntityDefinitionOrFail()->getIdentifierOrFail());
         $objectCollection = $dynamicEntityQuery->filterBy($identifier, $dynamicEntityIdentifiers, Criteria::IN)->find();
+        $connection = $this->getFactory()->getConnection();
 
         foreach ($objectCollection as $object) {
+            $getterMethodName = static::PREFIX_GETTER_METHOD . ucfirst($identifier);
+            $isInsideTransaction = $connection->inTransaction();
+
+            if ($isInsideTransaction) {
+                $connection->exec(sprintf('SAVEPOINT %s', static::SAVEPOINT_NAME_DELETE));
+            }
+
             try {
                 $object->delete();
             } catch (Exception $exception) {
-                $getterMethodName = static::PREFIX_GETTER_METHOD . ucfirst($identifier);
+                if ($isInsideTransaction) {
+                    $connection->exec(sprintf('ROLLBACK TO SAVEPOINT %s', static::SAVEPOINT_NAME_DELETE));
+                }
 
                 $dynamicEntityCollectionResponseTransfer = $this->handleDeleteException(
                     $dynamicEntityCollectionResponseTransfer,

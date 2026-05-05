@@ -54,6 +54,7 @@ class DynamicEntityDependencyProvider extends AbstractBundleDependencyProvider
         $container = parent::providePersistenceLayerDependencies($container);
 
         $container = $this->addUtilEncodingService($container);
+        $container = $this->addConnection($container);
 
         return $container;
     }
