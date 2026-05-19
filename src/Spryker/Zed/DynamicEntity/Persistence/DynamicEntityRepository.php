@@ -127,6 +127,9 @@ class DynamicEntityRepository extends AbstractRepository implements DynamicEntit
 
         $dynamicEntityConfigurationsQuery = $this->applyDynamicEntityConfigurationCriteria($dynamicEntityConfigurationsQuery, $dynamicEntityConfigurationCriteriaTransfer);
 
+        $dynamicEntityConfigurationsQuery
+            ->leftJoinWithSpyDynamicEntityConfigurationRelationRelatedByFkParentDynamicEntityConfiguration();
+
         $dynamicEntityConfigurations = $dynamicEntityConfigurationsQuery->find()->getData();
 
         $dynamicEntityConfigurationCollectionTransfer = new DynamicEntityConfigurationCollectionTransfer();
