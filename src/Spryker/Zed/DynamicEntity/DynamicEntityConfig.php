@@ -14,11 +14,15 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class DynamicEntityConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_PATH = '%errorPath%';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const PLACEHOLDER_FIELD_NAME = '%fieldName%';
