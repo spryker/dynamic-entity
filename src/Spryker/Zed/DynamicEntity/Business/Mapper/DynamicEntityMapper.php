@@ -145,7 +145,11 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
 
         foreach ($dynamicEntityCollectionTransfer->getDynamicEntities() as $dynamicEntity) {
             $dynamicEntityFields = $dynamicEntity->getFields();
-            $dynamicEntityId = $dynamicEntityFields[$parentFieldName];
+            $dynamicEntityId = $dynamicEntityFields[$parentFieldName] ?? null;
+
+            if ($dynamicEntityId === null) {
+                continue;
+            }
 
             $dynamicEntityRelationTransfer = $this->mapChildDynamicEntityToDynamicEntityRelationTransfer(
                 $childDynamicEntityCollectionTransfer,
@@ -243,10 +247,16 @@ class DynamicEntityMapper implements DynamicEntityMapperInterface
         $parentFieldName = $firstDynamicEntityRelationFieldMappingTransfer->getParentFieldName();
         $childFieldName = $firstDynamicEntityRelationFieldMappingTransfer->getChildFieldName();
 
-        $foreignKeyFieldMappingArray = [];
+        $foreignKeyFieldMappingArray = [$childFieldName => []];
         foreach ($dynamicEntityCollectionTransfer->getDynamicEntities() as $dynamicEntity) {
             $fields = $dynamicEntity->getFields();
-            $foreignKeyFieldMappingArray[$childFieldName][] = $fields[$parentFieldName];
+            $dynamicEntityId = $fields[$parentFieldName] ?? null;
+
+            if ($dynamicEntityId === null) {
+                continue;
+            }
+
+            $foreignKeyFieldMappingArray[$childFieldName][] = $dynamicEntityId;
         }
 
         return $foreignKeyFieldMappingArray;
