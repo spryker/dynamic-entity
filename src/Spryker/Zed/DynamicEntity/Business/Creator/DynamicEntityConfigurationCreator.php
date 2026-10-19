@@ -74,6 +74,7 @@ class DynamicEntityConfigurationCreator implements DynamicEntityConfigurationCre
     protected function executeCreateDynamicEntityConfigurationCollectionTransaction(
         ArrayObject $dynamicEntityConfigurationTransfers
     ): ArrayObject {
+        /** @var \ArrayObject<int, \Generated\Shared\Transfer\DynamicEntityConfigurationTransfer> $persistedDynamicEntityConfigurationTransfers */
         $persistedDynamicEntityConfigurationTransfers = new ArrayObject();
 
         foreach ($dynamicEntityConfigurationTransfers as $entityIdentifier => $dynamicEntityConfigurationTransfer) {
