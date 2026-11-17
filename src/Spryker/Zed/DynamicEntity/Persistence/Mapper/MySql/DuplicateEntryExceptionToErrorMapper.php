@@ -36,7 +36,7 @@ class DuplicateEntryExceptionToErrorMapper implements DatabaseExceptionToErrorMa
         }
 
         $code = (string)$previousException->getCode();
-        $errorMatches = (bool)preg_match(static::DUPLICATED_ENTRY_REGEX, $previousException->getMessage(), $matches);
+        $errorMatches = (bool)preg_match(static::DUPLICATED_ENTRY_REGEX, $previousException->getMessage());
 
         return $code === static::ERROR_CODE_INTEGRITY_CONSTRAINT && $errorMatches === true;
     }

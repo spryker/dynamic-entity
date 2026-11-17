@@ -36,7 +36,7 @@ class NotNullableExceptionToErrorMapper implements DatabaseExceptionToErrorMappe
         }
 
         $code = (string)$previousException->getCode();
-        $errorMatches = (bool)preg_match(static::NOT_NULL_ENTRY_REGEX, $previousException->getMessage(), $matches);
+        $errorMatches = (bool)preg_match(static::NOT_NULL_ENTRY_REGEX, $previousException->getMessage());
 
         return $code === static::ERROR_CODE_INTEGRITY_CONSTRAINT && $errorMatches === true;
     }
